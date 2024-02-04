@@ -13,8 +13,7 @@
 # audioanalyser.co - Official Website 🌏
 
 Welcome to the repository for
-[audioanalyser.co](https://audioanalyser.co), the digital presence of
-[**Sebastien Rousseau**](https://github.com/sebastienrousseau).
+[audioanalyser.co](https://audioanalyser.co), the digital presence of Audio Analyser.
 
 Audio Analyser offers state-of-the-art audio transcription, integrated speech-to-text, text analysis, and multilingual translations, efficiently providing critical insights from audio data to enhance both customer experience (CX) and employee experience (EX).
 
