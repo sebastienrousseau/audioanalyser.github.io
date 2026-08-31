@@ -1,0 +1,16 @@
+{
+  "name": "Audio Analyser",
+  "short_name": "AudioAnalyser",
+  "description": "Real-time acoustic analysis and signal processing suite.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0056b3",
+  "icons": [
+    {
+      "src": "https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

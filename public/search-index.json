@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Audio Analyser Overview",
+    "desc": "Real-time acoustic analysis, Fast Fourier Transform (FFT), sub-5ms DSP latency, WebAudio streaming, and speech intelligence.",
+    "keywords": "audio analyser home overview fast fourier transform fft dsp digital signal processing webaudio speech to text stt acoustic intelligence latency pcm",
+    "url": "/"
+  },
+  {
+    "title": "Real-Time Spectral FFT & Frequency Analysis",
+    "desc": "Sub-5ms Fast Fourier Transform (FFT), Mel-frequency filterbanks (MFCCs), spectral centroid, zero-crossing rate, and spectrograms.",
+    "keywords": "fast fourier transform fft spectral analysis spectrogram frequency domain mfcc mel frequency cepstral coefficients pitch detection audio dsp",
+    "url": "/features/index.html#spectral-fft"
+  },
+  {
+    "title": "Automated Speech-to-Text & Diarization",
+    "desc": "Speech recognition (STT), multi-speaker diarization, punctuation normalization, and time-aligned transcription across 60+ languages.",
+    "keywords": "speech to text stt speech recognition diarization transcription speaker separation translation languages audio transcribe",
+    "url": "/features/index.html#speech-to-text"
+  },
+  {
+    "title": "Conversational Sentiment & Tone Detection",
+    "desc": "Acoustic prosody metrics, pitch variation, linguistic tone scoring, key entity extraction, and automated summary reports.",
+    "keywords": "sentiment analysis tone detection acoustic prosody emotions intent summary reports speech intelligence recommendations",
+    "url": "/features/index.html#sentiment-tone"
+  },
+  {
+    "title": "DSP Architecture & System Ecosystem",
+    "desc": "Technical pipeline spanning audio ingestion, Rust DSP transformation, and Python AI inference engines.",
+    "keywords": "system architecture pipeline rust python dsp audio processing webaudio engine diagram wasm webassembly microservices",
+    "url": "/about/index.html"
+  },
+  {
+    "title": "Documentation, SDK & Quick Start",
+    "desc": "Installation via `pip install audioanalyser`, Python SDK usage examples, CLI terminal processing, and Docker containers.",
+    "keywords": "documentation quickstart python sdk pypi pip cli command line docker api reference tutorial installation",
+    "url": "/documentation/index.html"
+  },
+  {
+    "title": "Developer Support & Community",
+    "desc": "Open-source GitHub repository, issue tracker, developer support form, and enterprise deployment inquiries.",
+    "keywords": "contact support developer help issue tracker bug report github repository enterprise community form",
+    "url": "/contact/index.html"
+  },
+  {
+    "title": "Made with Static Site Generator (SSG)",
+    "desc": "Static Site Generator performance architecture, 100/100 Lighthouse metrics, sub-50ms TTFB, and zero tracking bloat.",
+    "keywords": "made with ssg static site generator performance lighthouse speed fast security privacy rust ssg",
+    "url": "/made-with-ssg/index.html"
+  },
+  {
+    "title": "Accessibility Statement",
+    "desc": "Commitment to digital inclusion, WCAG 2.2 Level AA and AAA compliance, high contrast, and screen reader support.",
+    "keywords": "accessibility statement wcag 2.2 aa aaa screen reader keyboard contrast digital inclusion a11y",
+    "url": "/accessibility/index.html"
+  },
+  {
+    "title": "Privacy Policy",
+    "desc": "Privacy-by-design standards, zero tracking cookies, and strict UK GDPR / EU GDPR data handling compliance.",
+    "keywords": "privacy policy gdpr cookies zero tracking data protection security privacy",
+    "url": "/privacy/index.html"
+  },
+  {
+    "title": "Terms of Use",
+    "desc": "Terms governing access, software use, and open-source dual Apache-2.0 and MIT licensing.",
+    "keywords": "terms of use legal apache-2.0 mit license software conditions open source",
+    "url": "/terms/index.html"
+  }
+]
