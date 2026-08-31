@@ -1,0 +1,18 @@
+{
+  "api": {
+    "is_user_authenticated": false,
+    "type": "openapi",
+    "url": "https://audioanalyser.com/openapi.yaml"
+  },
+  "auth": {
+    "type": "none"
+  },
+  "contact_email": "support@audioanalyser.com",
+  "description_for_human": "Fast, high-fidelity command-line audio analysis and frequency extraction tool built in Rust.",
+  "description_for_model": "Fast, high-fidelity command-line audio analysis and frequency extraction tool built in Rust.",
+  "legal_info_url": "https://audioanalyser.com/legal",
+  "logo_url": "https://audioanalyser.com/favicon.ico",
+  "name_for_human": "Audio Analyser | High-Performance Audio Processing CLI",
+  "name_for_model": "audio_analyser",
+  "schema_version": "v1"
+}

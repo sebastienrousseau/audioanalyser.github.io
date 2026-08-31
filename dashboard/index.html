@@ -16,15 +16,15 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="https://cloudcdn.pro/audioanalyser/images/favicon.ico" />
+    <link rel="shortcut icon" href="https://cloudcdn.pro/audioanalyser/v1/favicon.ico" />
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <nav aria-label="Main Navigation" class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="https://cloudcdn.pro/audioanalyser/images/banners/banner-audioanalyser.webp" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="https://cloudcdn.pro/audioanalyser/images/logos/audioanalyser.webp" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img src="https://cloudcdn.pro/audioanalyser/v1/banners/banner-audioanalyser.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -44,7 +44,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="https://cloudcdn.pro/stock/images/banners/sebastien-rousseau.webp" alt="image">
+                  <img src="https://cloudcdn.pro/stocks/images/sebastienrousseau.webp" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -171,12 +171,12 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <nav aria-label="Main Navigation" class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="https://cloudcdn.pro/stock/images/banners/sebastien-rousseau.webp" alt="profile">
+                  <img src="https://cloudcdn.pro/stocks/images/sebastienrousseau.webp" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
@@ -305,5 +305,277 @@
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
-  </body>
+  
+<div id="searchModal" class="search-modal" role="dialog" aria-modal="true" aria-label="Site Search" style="display:none;">
+  <div class="search-backdrop"></div>
+  <div class="search-dialog">
+    <div class="search-header">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="search" id="searchInput" class="search-input" placeholder="Search pages, articles, docs..." aria-label="Search query" autocomplete="off">
+      <button type="button" class="search-close" id="searchClose" aria-label="Close search">✕</button>
+    </div>
+    <div id="searchResults" class="search-results" role="listbox">
+      <div class="search-empty">Type to search...</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Theme Mode Variables & Overrides */
+:root[data-theme-mode="light"], [data-theme-mode="light"] {
+  --bg-canvas: #fbfbfd !important;
+  --bg-surface: #ffffff !important;
+  --bg-subtle: #f5f5f7 !important;
+  --bg-glass: rgba(255, 255, 255, 0.85) !important;
+  --text-headline: #1d1d1f !important;
+  --text-body: #1d1d1f !important;
+  --border-hairline: rgba(0, 0, 0, 0.08) !important;
+  color-scheme: light !important;
+}
+
+:root[data-theme-mode="dark"], [data-theme-mode="dark"] {
+  --bg-canvas: #000000 !important;
+  --bg-surface: #161617 !important;
+  --bg-subtle: #1d1d1f !important;
+  --bg-glass: rgba(22, 22, 23, 0.85) !important;
+  --text-headline: #f5f5f7 !important;
+  --text-body: #f5f5f7 !important;
+  --border-hairline: rgba(255, 255, 255, 0.12) !important;
+  color-scheme: dark !important;
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+  display: inline-flex;
+  gap: 2px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-hairline);
+  padding: 3px;
+  border-radius: 980px;
+}
+.theme-btn {
+  background: transparent;
+  border: none;
+  border-radius: 980px;
+  padding: 4px 7px;
+  color: var(--text-headline);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0.65;
+}
+.theme-btn:hover {
+  opacity: 1;
+}
+.theme-btn.active {
+  background: var(--bg-surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  opacity: 1;
+}
+
+/* Search Trigger & Modal Styles */
+.search-trigger {
+  border-radius: 980px !important;
+  border: 1px solid var(--border-hairline) !important;
+  background: var(--bg-subtle) !important;
+  color: var(--text-headline) !important;
+  padding: 0.35rem 0.85rem !important;
+}
+.search-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+}
+.search-backdrop {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+.search-dialog {
+  position: relative;
+  width: 90%;
+  max-width: 580px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.search-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-hairline);
+}
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-headline);
+  font-size: 1.1rem;
+  outline: none;
+}
+.search-close {
+  background: none;
+  border: none;
+  color: var(--text-headline);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.search-item {
+  padding: 10px 18px;
+  display: block;
+  text-decoration: none;
+  color: var(--text-headline);
+  border-bottom: 1px solid var(--border-hairline);
+  transition: background 0.15s ease;
+}
+.search-item:hover, .search-item.selected {
+  background: var(--bg-subtle);
+}
+.search-item-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.search-item-desc {
+  font-size: 0.82rem;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+.search-empty {
+  padding: 24px;
+  text-align: center;
+  opacity: 0.6;
+}
+</style>
+
+<script>
+(function() {
+  // 1. Theme Switcher Engine (Light / Dark / System)
+  const storedTheme = localStorage.getItem('theme-mode') || 'system';
+  function applyTheme(mode) {
+    if (mode === 'system') {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme-mode', isDark ? 'dark' : 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme-mode', mode);
+    }
+    localStorage.setItem('theme-mode', mode);
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-theme-mode') === mode);
+    });
+  }
+  
+  applyTheme(storedTheme);
+  
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if ((localStorage.getItem('theme-mode') || 'system') === 'system') {
+      applyTheme('system');
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    applyTheme(localStorage.getItem('theme-mode') || 'system');
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-theme-mode');
+        applyTheme(mode);
+      });
+    });
+
+    // 2. Search Modal & Engine
+    let searchIndex = null;
+    const modal = document.getElementById('searchModal');
+    const input = document.getElementById('searchInput');
+    const results = document.getElementById('searchResults');
+    const trigger = document.getElementById('searchTrigger');
+    const closeBtn = document.getElementById('searchClose');
+
+    async function loadSearch() {
+      if (!searchIndex) {
+        try {
+          const res = await fetch('/search-index.json');
+          if (res.ok) searchIndex = await res.json();
+        } catch (e) {
+          searchIndex = [];
+        }
+      }
+    }
+
+    function openSearch() {
+      if (!modal) return;
+      modal.style.display = 'flex';
+      loadSearch();
+      setTimeout(() => input && input.focus(), 50);
+    }
+
+    function closeSearch() {
+      if (!modal) return;
+      modal.style.display = 'none';
+      if (input) input.value = '';
+      if (results) results.innerHTML = '<div class="search-empty">Type to search...</div>';
+    }
+
+    if (trigger) trigger.addEventListener('click', openSearch);
+    if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+    if (modal) {
+      modal.querySelector('.search-backdrop').addEventListener('click', closeSearch);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+      } else if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+        closeSearch();
+      }
+    });
+
+    if (input) {
+      input.addEventListener('input', () => {
+        const query = input.value.trim().toLowerCase();
+        if (!query || !searchIndex || searchIndex.length === 0) {
+          results.innerHTML = '<div class="search-empty">Type to search...</div>';
+          return;
+        }
+        const matches = searchIndex.filter(item => 
+          (item.title && item.title.toLowerCase().includes(query)) ||
+          (item.description && item.description.toLowerCase().includes(query)) ||
+          (item.content && item.content.toLowerCase().includes(query))
+        ).slice(0, 8);
+
+        if (matches.length === 0) {
+          results.innerHTML = '<div class="search-empty">No results found for "' + query + '"</div>';
+          return;
+        }
+
+        results.innerHTML = matches.map(item => `
+          <a class="search-item" href="${item.url}">
+            <div class="search-item-title">${item.title}</div>
+            <div class="search-item-desc">${item.description || item.content || ''}</div>
+          </a>
+        `).join('');
+      });
+    }
+  });
+})();
+</script>
+
+</body>
 </html>
