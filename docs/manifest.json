@@ -1,0 +1,11 @@
+{
+  "background_color": "#ffffff",
+  "description": "Real-time acoustic signal processing suite featuring sub-5ms Fast Fourier Transform (FFT) analytics, automated speech recognition, and sentiment scoring.",
+  "display": "standalone",
+  "name": "Audio Analyser",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "short_name": "AA",
+  "start_url": ".",
+  "theme_color": null
+}

@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD033 MD041 -->
 
 <img
-src="https://cloudcdn.pro/audioanalyser/images/logos/audioanalyser.webp"
+src="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg"
 align="right"
 alt="Audio Analyser's logo"
 height="261"
@@ -50,7 +50,7 @@ width="261"
 
 **Experience the power of Audio Analyser today!**
 
-[banner]: https://cloudcdn.pro/audioanalyser/images/titles/title-audioanalyser.webp "Speech-to-Text & Analysis: Easy, Fast, Accurate."
+[banner]: https://cloudcdn.pro/audioanalyser/v1/titles/title-audioanalyser.svg "Speech-to-Text & Analysis: Easy, Fast, Accurate."
 [divider]: https://cloudcdn.pro/common/images/elements/divider.svg "Divider"
 
 ![divider][divider]

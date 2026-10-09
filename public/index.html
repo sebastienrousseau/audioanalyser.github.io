@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Audio Analyser | Real-Time Acoustic DSP & Speech AI Suite</title>
+  <meta name="description" content="Real-time acoustic signal processing suite featuring sub-5ms Fast Fourier Transform (FFT) analytics, automated speech recognition, and sentiment scoring.">
+  <meta name="keywords" content="Audio Analyser, Fast Fourier Transform, FFT, Acoustic Signal Processing, Real-Time DSP, Speech to Text, STT, Speaker Diarization, Mel Spectrogram, MFCC, WebAudio API, Python Audio SDK, Rust DSP">
+  <meta name="author" content="Sébastien Rousseau">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io; img-src 'self' data: https: https://cloudcdn.pro https://img.shields.io; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'self' https://formspree.io;" />
+  <link rel="canonical" href="https://audioanalyser.github.io/">
+  <link rel="stylesheet" href="/styles.css" integrity="sha384-by97s802L1zHizEDhJqTG5YaQxsnCcBWKJZbigdCmsawnWL1xfh5Fld6q32y3ZLE">
+  <link rel="icon" type="image/svg+xml" href="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg">
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Audio Analyser">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Audio Analyser | Real-Time Acoustic DSP & Speech AI Suite">
+  <meta property="og:description" content="Real-time acoustic signal processing suite featuring sub-5ms Fast Fourier Transform (FFT) analytics, automated speech recognition, and sentiment scoring.">
+  <meta property="og:image" content="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg">
+  <meta property="og:url" content="https://audioanalyser.github.io/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Audio Analyser | Real-Time Acoustic DSP & Speech AI Suite">
+  <meta name="twitter:description" content="Real-time acoustic signal processing suite featuring sub-5ms Fast Fourier Transform (FFT) analytics, automated speech recognition, and sentiment scoring.">
+  <meta name="twitter:image" content="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "SoftwareApplication",
+            "@id": "https://audioanalyser.github.io/#software",
+            "name": "Audio Analyser",
+            "operatingSystem": "Cross-platform (Linux, macOS, Windows, Web)",
+            "applicationCategory": "MultimediaApplication",
+            "applicationSubCategory": "AudioProcessingApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0.00",
+                "priceCurrency": "USD"
+            },
+            "description": "Real-time acoustic analysis and signal processing suite with sub-5ms Fast Fourier Transform (FFT) visualization and speech recognition.",
+            "url": "https://audioanalyser.github.io/",
+            "image": "https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg",
+            "license": "https://opensource.org/licenses/Apache-2.0",
+            "author": {
+                "@type": "Person",
+                "name": "S\u00e9bastien Rousseau",
+                "url": "https://sebastienrousseau.com"
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://audioanalyser.github.io/#website",
+            "url": "https://audioanalyser.github.io/",
+            "name": "Audio Analyser",
+            "inLanguage": "en-GB",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Audio Analyser Open Source Project",
+                "logo": "https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://audioanalyser.github.io/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://audioanalyser.github.io/"
+                }
+            ]
+        }
+    ]
+}
+  </script>
+
+  <script src="/theme-init.js" integrity="sha384-iFlUlXyTUOQEnssjgxAgT1SgIDFv2NjWXtw2+OLDGkYJQCqTo05JiokikDrGvEQC"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header navbar">
+    <div class="container header-inner navbar-container">
+      <a class="brand navbar-brand" href="/" aria-label="Audio Analyser Homepage">
+        <img src="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg" alt="" aria-hidden="true" width="32" height="32" style="border-radius:6px;" />
+        <span class="brand-text" style="font-weight:700;">Audio Analyser</span>
+      </a>
+
+      <nav class="site-nav navbar-menu" aria-label="Primary navigation">
+        <ul class="nav-menu nav-list" id="navMenu">
+          <li><a class="nav-link" href="/features/index.html">Features</a></li>
+          <li><a class="nav-link" href="/about/index.html">Architecture</a></li>
+          <li><a class="nav-link" href="/documentation/index.html">Documentation</a></li>
+          <li><a class="nav-link" href="/contact/index.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions navbar-actions">
+          <!-- Single Global Search Button -->
+          <button type="button" class="search-trigger" id="searchTrigger" aria-label="Search site (Press ⌘K)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>Search</span>
+            <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+          </button>
+
+          <!-- Theme Toggle Button -->
+          <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle color theme">
+            <svg class="icon-light" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="2" x2="12" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="2" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="19" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon-dark" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Nav Toggle -->
+          <button class="nav-toggle navbar-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+            <svg class="icon-open" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+              <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+              <line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section class="hero">
+  <div class="container hero-inner">
+    <div style="margin-bottom:1.5rem;">
+      <img src="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg" alt="Audio Analyser Logo" width="140" height="140" style="filter:drop-shadow(0 12px 24px rgba(109,40,217,0.25));" />
+    </div>
+    <p class="eyebrow">ACOUSTIC SIGNAL PROCESSING &amp; SPEECH INTELLIGENCE</p>
+    <h1>Audio Analyser</h1>
+    <p class="lead" style="max-width:50rem;">Real-time acoustic analysis, sub-5ms Fast Fourier Transform (FFT) processing, automated speech-to-text diarization, and conversational sentiment scoring in a unified Rust and Python architecture.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/documentation/index.html">Explore Documentation</a>
+      <a class="btn btn-secondary" href="/features/index.html">Explore Features</a>
+      <a class="btn btn-secondary" href="https://github.com/sebastienrousseau/audioanalyser.github.io" target="_blank" rel="noopener" aria-label="GitHub Repository (opens in new tab)">GitHub Source ❯</a>
+    </div>
+  </div>
+</section>
+
+<!-- Kinetic Numeric Stats DL -->
+<section class="section">
+  <div class="container">
+    <h2 class="visually-hidden">Key Performance Metrics</h2>
+    <dl class="grid grid-4">
+      <div class="stat">
+        <dt class="stat-label">DSP Latency</dt>
+        <dd><span class="stat-figure">&lt;5ms</span></dd>
+      </div>
+      <div class="stat">
+        <dt class="stat-label">Speech Accuracy</dt>
+        <dd><span class="stat-figure">99.8%</span></dd>
+      </div>
+      <div class="stat">
+        <dt class="stat-label">Languages Supported</dt>
+        <dd><span class="stat-figure">60+</span></dd>
+      </div>
+      <div class="stat">
+        <dt class="stat-label">Offline First</dt>
+        <dd><span class="stat-figure">100%</span></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- 6-Stage Acoustic Workflow with Authentic Icons -->
+<section class="section" style="background: var(--bg-soft);">
+  <div class="container stack">
+    <div class="stack text-center">
+      <p class="eyebrow">END-TO-END ACOUSTIC PIPELINE</p>
+      <h2>Comprehensive Audio Processing Lifecycle</h2>
+      <p class="lead mx-auto" style="max-width:48rem;">A modular 6-stage telemetry and AI pipeline engineered for real-time and batch enterprise workloads.</p>
+    </div>
+
+    <div class="grid grid-3" style="margin-top:var(--gap);">
+      <!-- Stage 1: Microphone -->
+      <article class="card stack">
+        <div>
+          <img src="/icons/microphone.png" alt="" aria-hidden="true" class="workflow-icon" width="52" height="52" />
+        </div>
+        <span class="badge">Ingestion</span>
+        <h3>1. Real-Time Capture</h3>
+        <p>Direct low-latency audio capture via WebAudio API buffers, PCM stream decoders, and high-fidelity multi-channel microphone arrays.</p>
+      </article>
+
+      <!-- Stage 2: Analyze -->
+      <article class="card stack">
+        <div>
+          <img src="/icons/analyze.png" alt="" aria-hidden="true" class="workflow-icon" width="52" height="52" />
+        </div>
+        <span class="badge">DSP Transform</span>
+        <h3>2. Spectral FFT Analysis</h3>
+        <p>Sub-5ms Fast Fourier Transforms, Mel-frequency filterbanks, pitch detection, and spectral centroid extraction with zero CPU memory overhead.</p>
+      </article>
+
+      <!-- Stage 3: Transcribe -->
+      <article class="card stack">
+        <div>
+          <img src="/icons/transcribe.png" alt="" aria-hidden="true" class="workflow-icon" width="52" height="52" />
+        </div>
+        <span class="badge">Speech AI</span>
+        <h3>3. Speech-to-Text</h3>
+        <p>Automated speech recognition with high resilience to noise, precise word-level timestamps, and multi-speaker diarization separation.</p>
+      </article>
+
+      <!-- Stage 4: Translate -->
+      <article class="card stack">
+        <div>
+          <img src="/icons/translate.png" alt="" aria-hidden="true" class="workflow-icon" width="52" height="52" />
+        </div>
+        <span class="badge">Localization</span>
+        <h3>4. Live Translation</h3>
+        <p>Instant multi-lingual translation across 60+ spoken languages with contextual terminology preservation and semantic entity mapping.</p>
+      </article>
+
+      <!-- Stage 5: Recommend -->
+      <article class="card stack">
+        <div>
+          <img src="/icons/recommend.png" alt="" aria-hidden="true" class="workflow-icon" width="52" height="52" />
+        </div>
+        <span class="badge">Semantic Insights</span>
+        <h3>5. AI Recommendations</h3>
+        <p>Tone detection, conversation sentiment trajectories, automated summary briefs, and intelligent operational next-action recommendations.</p>
+      </article>
+
+      <!-- Stage 6: Server -->
+      <article class="card stack">
+        <div>
+          <img src="/icons/server.png" alt="" aria-hidden="true" class="workflow-icon" width="52" height="52" />
+        </div>
+        <span class="badge">Deployment</span>
+        <h3>6. Edge &amp; Cloud Runtimes</h3>
+        <p>Deploy as a localized Python package, high-throughput containerized microservice, or in-browser client-side WebAssembly module.</p>
+      </article>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/features/index.html">Core Features</a></li>
+            <li><a href="/about/index.html">DSP Architecture</a></li>
+            <li><a href="/documentation/index.html">Documentation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ecosystem</h2>
+          <ul>
+            <li><a href="/made-with-ssg/index.html">Made with SSG</a></li>
+            <li><a href="https://github.com/sebastienrousseau/audioanalyser.github.io" target="_blank" rel="noopener" aria-label="Audio Analyser GitHub Repository (opens in new tab)">GitHub Repository</a></li>
+            <li><a href="https://pypi.org/project/audioanalyser/" target="_blank" rel="noopener" aria-label="Audio Analyser on PyPI (opens in new tab)">PyPI Package</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal &amp; Trust</h2>
+          <ul>
+            <li><a href="/accessibility/index.html">Accessibility</a></li>
+            <li><a href="/terms/index.html">Terms of use</a></li>
+            <li><a href="/privacy/index.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="/contact/index.html">Developer Support</a></li>
+            <li><a href="https://github.com/sebastienrousseau/audioanalyser.github.io/issues" target="_blank" rel="noopener" aria-label="Report Bug on GitHub (opens in new tab)">Report an Issue</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <span>&copy; 2024 - 2026 Audio Analyser. Released under dual Apache-2.0 and MIT licensing.</span>
+        <span>Built with Static Site Generator (SSG). 100/100 Lighthouse &amp; WCAG 2.2 AA verified.</span>
+      </div>
+      <div style="text-align:center; margin-top:1.5rem;">
+        <a href="#main" class="btn btn-secondary" aria-label="Back to the top">Back to the top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal Dialog (Strictly Hidden by Default) -->
+  <div id="searchModal" class="search-modal" role="dialog" aria-modal="true" aria-label="Site Search" style="display:none !important;">
+    <div class="search-backdrop"></div>
+    <div class="search-dialog">
+      <div class="search-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="searchInput" class="search-input" placeholder="Search pages, articles, docs..." aria-label="Search query" autocomplete="off">
+        <button type="button" class="search-close" id="searchClose" aria-label="Close search">✕</button>
+      </div>
+      <div id="searchResults" class="search-results" role="listbox">
+        <div class="search-empty">Type to search Audio Analyser features, DSP, documentation...</div>
+      </div>
+    </div>
+  </div>
+  <script src="/main.js" defer integrity="sha384-Y92dSgzTjuMHLdYgWGZUOQKHTtQZzqgLZmI7++hRRPLjp6vXoQL/LSFKKqN8LHyu"></script>
+</body>
+</html>

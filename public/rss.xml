@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Audio Analyser</title>
+    <link>https://audioanalyser.github.io/</link>
+    <description>Real-time acoustic analysis and signal processing suite.</description>
+    <language>en-gb</language>
+  </channel>
+</rss>

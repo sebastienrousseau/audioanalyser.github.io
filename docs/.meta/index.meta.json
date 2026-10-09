@@ -1,0 +1,14 @@
+{
+  "author": "Sébastien Rousseau",
+  "date": "2026-08-31",
+  "description": "Real-time acoustic signal processing suite featuring sub-5ms Fast Fourier Transform (FFT) analytics, automated speech recognition, and sentiment scoring.",
+  "keywords": "Audio Analyser, Fast Fourier Transform, FFT, Acoustic Signal Processing, Real-Time DSP, Speech to Text, STT, Speaker Diarization, Mel Spectrogram, MFCC, WebAudio API, Python Audio SDK, Rust DSP",
+  "language": "en-GB",
+  "layout": "index",
+  "name": "Audio Analyser",
+  "permalink": "https://audioanalyser.github.io/",
+  "reading_time": 2,
+  "short_name": "AA",
+  "title": "Audio Analyser | Real-Time Acoustic DSP & Speech AI Suite",
+  "word_count": 425
+}

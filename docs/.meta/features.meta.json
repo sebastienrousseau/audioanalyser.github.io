@@ -1,0 +1,14 @@
+{
+  "author": "Sébastien Rousseau",
+  "date": "2026-08-31",
+  "description": "Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection.",
+  "keywords": "Fast Fourier Transform, FFT Analysis, Spectral Analysis, Audio Feature Extraction, Mel Spectrogram, MFCC, Speech to Text, Speaker Diarization, Acoustic AI, Prosody Analysis",
+  "language": "en-GB",
+  "layout": "features",
+  "name": "Audio Analyser",
+  "permalink": "https://audioanalyser.github.io/features/index.html",
+  "reading_time": 2,
+  "short_name": "AA",
+  "title": "Features | Fast Fourier Transform, Speech-to-Text & DSP",
+  "word_count": 402
+}

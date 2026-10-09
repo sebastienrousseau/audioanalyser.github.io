@@ -1,0 +1,21 @@
+{
+  "api": "ssg-agent-api",
+  "counts": {
+    "posts": 0,
+    "topics": 0
+  },
+  "links": {
+    "index": "https://audioanalyser.com/api/agents/index.json",
+    "person": "https://audioanalyser.com/api/agents/person.json",
+    "posts": "https://audioanalyser.com/api/agents/posts.json",
+    "topics": "https://audioanalyser.com/api/agents/topics.json"
+  },
+  "site": {
+    "description": "Fast, high-fidelity command-line audio analysis and frequency extraction tool built in Rust.",
+    "language": "en-GB",
+    "name": "Audio Analyser",
+    "title": "Audio Analyser | High-Performance Audio Processing CLI",
+    "url": "https://audioanalyser.com"
+  },
+  "version": "0.0.56"
+}

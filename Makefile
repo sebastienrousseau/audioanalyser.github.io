@@ -1,31 +1,29 @@
 # Basic Makefile for AudioAnalyser Application
+# Copyright (C) 2023-2026 Sebastien Rousseau.
+# SPDX-License-Identifier: Apache-2.0 OR MIT
 
-# Copyright (C) 2023-2024 Sebastien Rousseau.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-# implied.
-#
-# See the License for the specific language governing permissions and
-# limitations under the License.
+.PHONY: install run clean contrast validate build
 
-.PHONY: install run clean
+build:
+	@ssg build -f ssg.toml
+	@mkdir -p docs/icons docs/assets/images
+	@cp -R icons/. docs/icons/ 2>/dev/null || true
+	@cp -R icons/. docs/assets/images/ 2>/dev/null || true
+	@cp audio-analyser-architecture.png docs/ 2>/dev/null || true
+	@cp audio-analyser-architecture.png docs/assets/images/ 2>/dev/null || true
+	@cp public/404.html docs/404.html 2>/dev/null || true
 
 install:
-    pip install -r requirements.txt
+	pip install -r requirements.txt
 
 run:
-    python -m audioanalyser
+	python -m audioanalyser
 
 clean:
-    rm -rf __pycache__
-    rm -rf build/
-    rm -rf dist/
-    rm -rf *.egg-info
+	rm -rf __pycache__ build/ dist/ *.egg-info
+
+contrast:
+	@/usr/bin/python3 scripts/audit-contrast.py
+
+validate:
+	@/usr/bin/python3 scripts/validate-frontmatter.py

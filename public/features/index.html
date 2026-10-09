@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Features | Fast Fourier Transform, Speech-to-Text & DSP</title>
+  <meta name="description" content="Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection.">
+  <meta name="keywords" content="Fast Fourier Transform, FFT Analysis, Spectral Analysis, Audio Feature Extraction, Mel Spectrogram, MFCC, Speech to Text, Speaker Diarization, Acoustic AI, Prosody Analysis">
+  <meta name="author" content="Sébastien Rousseau">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io; img-src 'self' data: https: https://cloudcdn.pro https://img.shields.io; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'self' https://formspree.io;" />
+  <link rel="canonical" href="https://audioanalyser.github.io/features/index.html">
+  <link rel="stylesheet" href="/styles.css" integrity="sha384-by97s802L1zHizEDhJqTG5YaQxsnCcBWKJZbigdCmsawnWL1xfh5Fld6q32y3ZLE">
+  <link rel="icon" type="image/svg+xml" href="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg">
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Audio Analyser">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Features | Fast Fourier Transform, Speech-to-Text & DSP">
+  <meta property="og:description" content="Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection.">
+  <meta property="og:image" content="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg">
+  <meta property="og:url" content="https://audioanalyser.github.io/features/index.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Features | Fast Fourier Transform, Speech-to-Text & DSP">
+  <meta name="twitter:description" content="Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection.">
+  <meta name="twitter:image" content="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ItemPage",
+            "@id": "https://audioanalyser.github.io/features/index.html#page",
+            "url": "https://audioanalyser.github.io/features/index.html",
+            "name": "Features | Fast Fourier Transform, Speech-to-Text & DSP",
+            "description": "Comprehensive feature breakdown for Audio Analyser acoustic DSP and speech recognition.",
+            "inLanguage": "en-GB"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://audioanalyser.github.io/features/index.html#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://audioanalyser.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Features",
+                    "item": "https://audioanalyser.github.io/features/index.html"
+                }
+            ]
+        }
+    ]
+}
+  </script>
+
+  <script src="/theme-init.js" integrity="sha384-iFlUlXyTUOQEnssjgxAgT1SgIDFv2NjWXtw2+OLDGkYJQCqTo05JiokikDrGvEQC"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header navbar">
+    <div class="container header-inner navbar-container">
+      <a class="brand navbar-brand" href="/" aria-label="Audio Analyser Homepage">
+        <img src="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg" alt="" aria-hidden="true" width="32" height="32" style="border-radius:6px;" />
+        <span class="brand-text" style="font-weight:700;">Audio Analyser</span>
+      </a>
+
+      <nav class="site-nav navbar-menu" aria-label="Primary navigation">
+        <ul class="nav-menu nav-list" id="navMenu">
+          <li><a class="nav-link" href="/features/index.html" aria-current="page">Features</a></li>
+          <li><a class="nav-link" href="/about/index.html">Architecture</a></li>
+          <li><a class="nav-link" href="/documentation/index.html">Documentation</a></li>
+          <li><a class="nav-link" href="/contact/index.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions navbar-actions">
+          <!-- Single Global Search Button -->
+          <button type="button" class="search-trigger" id="searchTrigger" aria-label="Search site (Press ⌘K)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>Search</span>
+            <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+          </button>
+
+          <!-- Theme Toggle Button -->
+          <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Toggle color theme">
+            <svg class="icon-light" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="2" x2="12" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="2" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="19" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon-dark" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Nav Toggle -->
+          <button class="nav-toggle navbar-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+            <svg class="icon-open" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+              <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+              <line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section class="section">
+  <div class="container stack">
+    <div class="stack text-center">
+      <p class="eyebrow">FEATURE BREAKDOWN</p>
+      <h1>Acoustic DSP &amp; Intelligence Capabilities</h1>
+      <p class="lead mx-auto" style="max-width:48rem;">A complete suite of signal processing algorithms and AI speech models engineered for production workflows.</p>
+    </div>
+
+    <div class="stack" style="gap:var(--gap); margin-top:var(--gap);">
+      <!-- Feature 1: Fast Fourier Transform & Spectral Analysis -->
+      <article class="card stack" id="spectral-fft" style="padding:var(--gap);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <img src="/icons/analyze.png" alt="" aria-hidden="true" width="40" height="40" />
+            <span class="badge">Digital Signal Processing</span>
+          </div>
+          <span style="color:var(--ink-muted); font-size:0.9rem; font-weight:600;">Feature 01</span>
+        </div>
+        <h2 style="margin-top:0.5rem;">1. Fast Fourier Transform (FFT) &amp; Spectral Analysis</h2>
+        <p class="lead">Sub-5ms frequency domain transformation with interactive spectrogram and filterbank rendering.</p>
+        <div class="prose">
+          <p>Extract mathematical acoustic features directly from audio buffers using vectorized Fast Fourier Transforms (FFT) and zero-allocation memory pipelines.</p>
+          <ul>
+            <li><strong>Mel-Frequency Cepstral Coefficients (MFCCs):</strong> Computes 13–40 cepstral coefficients for accurate voice classification and acoustic timbre identification.</li>
+            <li><strong>Spectral Descriptors:</strong> Computes Spectral Centroid, Spectral Rolloff, Flux, and Flatness in real time.</li>
+            <li><strong>Zero-Crossing Rate (ZCR):</strong> Detects unvoiced phonetic segments, percussion transients, and background noise thresholds.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Feature 2: Speech-to-Text -->
+      <article class="card stack" id="speech-to-text" style="padding:var(--gap);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <img src="/icons/transcribe.png" alt="" aria-hidden="true" width="40" height="40" />
+            <span class="badge">Speech AI Engine</span>
+          </div>
+          <span style="color:var(--ink-muted); font-size:0.9rem; font-weight:600;">Feature 02</span>
+        </div>
+        <h2 style="margin-top:0.5rem;">2. Automated Speech-to-Text &amp; Diarization</h2>
+        <p class="lead">Converting complex multi-channel audio recordings into structured, searchable text data with sub-second turnaround.</p>
+        <div class="prose">
+          <p>Audio Analyser integrates state-of-the-art acoustic models to transcribe conversations with high fidelity across 60+ languages. Automatic speaker diarization isolates and timestamps distinct participant dialogue tracks.</p>
+          <ul>
+            <li><strong>High-Fidelity Transcription:</strong> Resilient to background noise, room reverberation, and overlapping speech.</li>
+            <li><strong>Speaker Separation:</strong> Tracks multi-speaker conversations and generates speaker-attributed transcripts.</li>
+            <li><strong>Punctuation &amp; Normalization:</strong> Formats currency, dates, numbers, and grammar automatically.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Feature 3: Semantic Intelligence -->
+      <article class="card stack" id="sentiment-tone" style="padding:var(--gap);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <img src="/icons/recommend.png" alt="" aria-hidden="true" width="40" height="40" />
+            <span class="badge">Semantic Intelligence</span>
+          </div>
+          <span style="color:var(--ink-muted); font-size:0.9rem; font-weight:600;">Feature 03</span>
+        </div>
+        <h2 style="margin-top:0.5rem;">3. Conversational Sentiment &amp; Tone Detection</h2>
+        <p class="lead">Surface customer sentiment trends, key intent drivers, and operational risk indicators.</p>
+        <div class="prose">
+          <p>Combines linguistic analysis with acoustic prosody metrics (pitch variation, speaking rate, energy) to evaluate conversational sentiment accurately.</p>
+          <ul>
+            <li><strong>Multi-Dimensional Sentiment:</strong> Evaluates positive, neutral, and negative sentiment distribution per conversation turn.</li>
+            <li><strong>Entity &amp; Key Phrase Extraction:</strong> Automatically tags domain keywords, product references, and action items.</li>
+            <li><strong>Automated Summary Reports:</strong> Produces executive insight briefs summarizing call outcomes in seconds.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/features/index.html">Core Features</a></li>
+            <li><a href="/about/index.html">DSP Architecture</a></li>
+            <li><a href="/documentation/index.html">Documentation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ecosystem</h2>
+          <ul>
+            <li><a href="/made-with-ssg/index.html">Made with SSG</a></li>
+            <li><a href="https://github.com/sebastienrousseau/audioanalyser.github.io" target="_blank" rel="noopener" aria-label="Audio Analyser GitHub Repository (opens in new tab)">GitHub Repository</a></li>
+            <li><a href="https://pypi.org/project/audioanalyser/" target="_blank" rel="noopener" aria-label="Audio Analyser on PyPI (opens in new tab)">PyPI Package</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Legal &amp; Trust</h2>
+          <ul>
+            <li><a href="/accessibility/index.html">Accessibility</a></li>
+            <li><a href="/terms/index.html">Terms of use</a></li>
+            <li><a href="/privacy/index.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="/contact/index.html">Developer Support</a></li>
+            <li><a href="https://github.com/sebastienrousseau/audioanalyser.github.io/issues" target="_blank" rel="noopener" aria-label="Report Bug on GitHub (opens in new tab)">Report an Issue</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <span>&copy; 2024 - 2026 Audio Analyser. Released under dual Apache-2.0 and MIT licensing.</span>
+        <span>Built with Static Site Generator (SSG). 100/100 Lighthouse &amp; WCAG 2.2 AA verified.</span>
+      </div>
+      <div style="text-align:center; margin-top:1.5rem;">
+        <a href="#main" class="btn btn-secondary" aria-label="Back to the top">Back to the top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal Dialog (Strictly Hidden by Default) -->
+  <div id="searchModal" class="search-modal" role="dialog" aria-modal="true" aria-label="Site Search" style="display:none !important;">
+    <div class="search-backdrop"></div>
+    <div class="search-dialog">
+      <div class="search-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="searchInput" class="search-input" placeholder="Search pages, articles, docs..." aria-label="Search query" autocomplete="off">
+        <button type="button" class="search-close" id="searchClose" aria-label="Close search">✕</button>
+      </div>
+      <div id="searchResults" class="search-results" role="listbox">
+        <div class="search-empty">Type to search Audio Analyser features, DSP, documentation...</div>
+      </div>
+    </div>
+  </div>
+  <script src="/main.js" defer integrity="sha384-Y92dSgzTjuMHLdYgWGZUOQKHTtQZzqgLZmI7++hRRPLjp6vXoQL/LSFKKqN8LHyu"></script>
+</body>
+</html>

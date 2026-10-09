@@ -1,0 +1,5 @@
+# Audio Analyser
+
+> Fast, high-fidelity command-line audio analysis and frequency extraction tool built in Rust.
+
+Language: en-GB

@@ -1,0 +1,47 @@
+pre.highlight{background:#f6f8fa;border:1px solid #d0d7de;border-radius:6px;padding:1em;overflow-x:auto;font-size:0.875em;line-height:1.45;}pre.highlight code{background:none;padding:0;border:none;font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;}@media(prefers-color-scheme:dark){pre.highlight{background:#161b22;border-color:#30363d;color:#e6edf3;}}
+
+  /* Photo Lightbox Navigation Arrows & Counter */
+  .photo-lightbox-nav {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 30 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .photo-lightbox-nav:hover {
+    background: rgba(0, 0, 0, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    transform: translateY(-50%) scale(1.12) !important;
+  }
+  .photo-lightbox-prev {
+    left: 16px !important;
+  }
+  .photo-lightbox-next {
+    right: 16px !important;
+  }
+  .photo-lightbox-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1rem;
+  }
+  .photo-lightbox-counter {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  }

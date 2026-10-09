@@ -1,0 +1,19 @@
+{
+  "background_color": "#ffffff",
+  "description": "Website created with Static Site Generator (SSG) — engineered for sub-50ms TTFB, zero tracking cookies, 100/100 Lighthou",
+  "display": "standalone",
+  "icons": [
+    {
+      "purpose": "any maskable",
+      "sizes": "512x512",
+      "src": "",
+      "type": "image/svg+xml"
+    }
+  ],
+  "name": "Audio Analyser",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "short_name": "AA",
+  "start_url": ".",
+  "theme_color": null
+}

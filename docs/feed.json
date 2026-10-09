@@ -1,0 +1,129 @@
+{
+  "feed_url": "https://audioanalyser.com/feed.json",
+  "home_page_url": "https://audioanalyser.com/",
+  "items": [
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Technical architecture, signal processing pipeline, Rust DSP engine, Python AI integrations, and WebAudio components powering Audio Analyser.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/about/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Architecture & Ecosystem | Audio Analyser Pipeline",
+      "url": "https://audioanalyser.com/about/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Comprehensive accessibility statement for Audio Analyser: WCAG 2.2 AA / AAA conformance, keyboard navigability, 7:1 contrast, and screen reader verification.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/accessibility/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Accessibility Statement | WCAG 2.2 AA / AAA Standards",
+      "url": "https://audioanalyser.com/accessibility/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Connect with the Audio Analyser maintainers for technical support, open-source issues, and enterprise acoustic DSP integration inquiries.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/contact/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Contact & Developer Support | Audio Analyser",
+      "url": "https://audioanalyser.com/contact/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Complete developer guide for Audio Analyser: PyPI package installation, Python SDK examples, CLI commands, and Docker microservice deployment.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/documentation/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Documentation & Quick Start | Python SDK & CLI",
+      "url": "https://audioanalyser.com/documentation/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/features/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Features | Fast Fourier Transform, Speech-to-Text & DSP",
+      "url": "https://audioanalyser.com/features/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Website created with Static Site Generator (SSG) — engineered for sub-50ms TTFB, zero tracking cookies, 100/100 Lighthouse metrics, and WCAG AAA compliance.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/made-with-ssg/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Made with SSG | High-Performance Static Architecture",
+      "url": "https://audioanalyser.com/made-with-ssg/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Official privacy policy for Audio Analyser: zero tracking cookies, no cross-site analytics, local preference storage, and UK / EU GDPR data protection rights.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/privacy/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Privacy Policy | Zero-Tracking & UK GDPR Compliance",
+      "url": "https://audioanalyser.com/privacy/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sébastien Rousseau"
+        }
+      ],
+      "content_html": "Official terms of use governing access, package downloads, software use, and dual Apache-2.0 & MIT open-source licensing for Audio Analyser.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://audioanalyser.com/terms/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Terms of Use | Dual Open-Source Licensing (Apache-2.0 & MIT)",
+      "url": "https://audioanalyser.com/terms/"
+    }
+  ],
+  "language": "en-GB",
+  "title": "Audio Analyser",
+  "version": "https://jsonfeed.org/version/1.1"
+}

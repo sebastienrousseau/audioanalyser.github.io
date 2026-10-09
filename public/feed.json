@@ -1,0 +1,16 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Audioanalyser Digital Portal",
+  "home_page_url": "https://audioanalyser.github.io",
+  "feed_url": "https://audioanalyser.github.io/feed.json",
+  "description": "Official digital portal for Audioanalyser.",
+  "items": [
+    {
+      "id": "https://audioanalyser.github.io/",
+      "url": "https://audioanalyser.github.io/",
+      "title": "Audioanalyser Digital Portal",
+      "content_text": "Official digital portal for Audioanalyser.",
+      "date_published": "2024-03-04T06:06:06Z"
+    }
+  ]
+}

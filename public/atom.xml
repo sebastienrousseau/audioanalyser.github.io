@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Audioanalyser Digital Portal</title>
+  <subtitle>Official digital portal for Audioanalyser.</subtitle>
+  <link href="https://audioanalyser.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://audioanalyser.github.io/"/>
+  <updated>2026-08-31T12:00:00Z</updated>
+  <id>https://audioanalyser.github.io/</id>
+  <entry>
+    <title>Audioanalyser Digital Portal</title>
+    <link href="https://audioanalyser.github.io/"/>
+    <id>https://audioanalyser.github.io/</id>
+    <updated>2026-08-31T12:00:00Z</updated>
+    <summary>Official digital portal for Audioanalyser.</summary>
+  </entry>
+</feed>

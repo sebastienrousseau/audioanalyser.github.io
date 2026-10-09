@@ -1,0 +1,20 @@
+# Generated site-level configuration for audioanalyser.github.io
+site_name = "Audio Analyser"
+site_title = "Audio Analyser | High-Performance Audio Processing CLI"
+site_description = "Fast, high-fidelity command-line audio analysis and frequency extraction tool built in Rust."
+base_url = "https://audioanalyser.com"
+language = "en-GB"
+
+content_dir = "_posts"
+template_dir = "_layouts"
+output_dir = "docs"
+
+[agents]
+agents_txt = true
+ai_plugin = true
+
+[agents.mcp]
+enabled = true
+
+[edge_headers]
+targets = ["netlify", "cloudflare", "vercel"]

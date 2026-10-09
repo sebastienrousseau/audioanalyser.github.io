@@ -1,0 +1,14 @@
+{
+  "author": "Sébastien Rousseau",
+  "date": "2026-08-31",
+  "description": "Technical architecture, signal processing pipeline, Rust DSP engine, Python AI integrations, and WebAudio components powering Audio Analyser.",
+  "keywords": "Audio Analyser Architecture, Rust DSP, Python Audio Processing, WebAudio Engine, WASM Signal Processing, Audio Pipeline, Spectrogram Pipeline",
+  "language": "en-GB",
+  "layout": "about",
+  "name": "Audio Analyser",
+  "permalink": "https://audioanalyser.github.io/about/index.html",
+  "reading_time": 1,
+  "short_name": "AA",
+  "title": "Architecture & Ecosystem | Audio Analyser Pipeline",
+  "word_count": 221
+}

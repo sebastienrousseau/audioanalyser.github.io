@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Audio Analyser | Real-Time Acoustic DSP &amp; Speech AI Suite</title>
+    <link>https://audioanalyser.github.io/</link>
+    <description>Real-time acoustic signal processing suite featuring sub-5ms Fast Fourier Transform (FFT) analytics, automated speech recognition, and sentiment scoring.</description>
+    <atom:link href="https://audioanalyser.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <language>en</language>
+    <item>
+      <title>Accessibility Statement | WCAG 2.2 AA / AAA Standards</title>
+      <link>https://audioanalyser.com/accessibility/</link>
+      <description>Comprehensive accessibility statement for Audio Analyser: WCAG 2.2 AA / AAA conformance, keyboard navigability, 7:1 contrast, and screen reader verification.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/accessibility/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+    <item>
+      <title>Architecture & Ecosystem | Audio Analyser Pipeline</title>
+      <link>https://audioanalyser.com/about/</link>
+      <description>Technical architecture, signal processing pipeline, Rust DSP engine, Python AI integrations, and WebAudio components powering Audio Analyser.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/about/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+    <item>
+      <title>Contact & Developer Support | Audio Analyser</title>
+      <link>https://audioanalyser.com/contact/</link>
+      <description>Connect with the Audio Analyser maintainers for technical support, open-source issues, and enterprise acoustic DSP integration inquiries.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/contact/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+    <item>
+      <title>Documentation & Quick Start | Python SDK & CLI</title>
+      <link>https://audioanalyser.com/documentation/</link>
+      <description>Complete developer guide for Audio Analyser: PyPI package installation, Python SDK examples, CLI commands, and Docker microservice deployment.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/documentation/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+    <item>
+      <title>Features | Fast Fourier Transform, Speech-to-Text & DSP</title>
+      <link>https://audioanalyser.com/features/</link>
+      <description>Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/features/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+    <item>
+      <title>Made with SSG | High-Performance Static Architecture</title>
+      <link>https://audioanalyser.com/made-with-ssg/</link>
+      <description>Website created with Static Site Generator (SSG) — engineered for sub-50ms TTFB, zero tracking cookies, 100/100 Lighthouse metrics, and WCAG AAA compliance.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/made-with-ssg/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+    <item>
+      <title>Privacy Policy | Zero-Tracking & UK GDPR Compliance</title>
+      <link>https://audioanalyser.com/privacy/</link>
+      <description>Official privacy policy for Audio Analyser: zero tracking cookies, no cross-site analytics, local preference storage, and UK / EU GDPR data protection rights.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/privacy/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+    <item>
+      <title>Terms of Use | Dual Open-Source Licensing (Apache-2.0 & MIT)</title>
+      <link>https://audioanalyser.com/terms/</link>
+      <description>Official terms of use governing access, package downloads, software use, and dual Apache-2.0 &amp; MIT open-source licensing for Audio Analyser.</description>
+      <guid isPermaLink="true">https://audioanalyser.com/terms/</guid>
+      <pubDate></pubDate>
+      <author>Sébastien Rousseau</author>
+    </item>
+  </channel>
+</rss>
