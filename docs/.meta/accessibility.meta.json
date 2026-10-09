@@ -1,0 +1,14 @@
+{
+  "author": "Sébastien Rousseau",
+  "date": "2026-08-31",
+  "description": "Comprehensive accessibility statement for Audio Analyser: WCAG 2.2 AA / AAA conformance, keyboard navigability, 7:1 contrast, and screen reader verification.",
+  "keywords": "Accessibility Statement, WCAG 2.2 AA, WCAG AAA, Digital Inclusion, Screen Reader Verification, Section 508, EN 301 549, High Contrast, Keyboard Accessible",
+  "language": "en-GB",
+  "layout": "accessibility",
+  "name": "Audio Analyser",
+  "permalink": "https://audioanalyser.github.io/accessibility/index.html",
+  "reading_time": 3,
+  "short_name": "AA",
+  "title": "Accessibility Statement | WCAG 2.2 AA / AAA Standards",
+  "word_count": 655
+}

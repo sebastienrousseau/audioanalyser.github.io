@@ -1,16 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Audioanalyser Digital Portal</title>
-  <subtitle>Official digital portal for Audioanalyser.</subtitle>
-  <link href="https://audioanalyser.github.io/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://audioanalyser.github.io/"/>
-  <updated>2026-08-31T12:00:00Z</updated>
-  <id>https://audioanalyser.github.io/</id>
+  <title>Audio Analyser</title>
+  <link href="https://audioanalyser.com/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://audioanalyser.com"/>
+  <id>https://audioanalyser.com</id>
+  <updated></updated>
   <entry>
-    <title>Audioanalyser Digital Portal</title>
-    <link href="https://audioanalyser.github.io/"/>
-    <id>https://audioanalyser.github.io/</id>
-    <updated>2026-08-31T12:00:00Z</updated>
-    <summary>Official digital portal for Audioanalyser.</summary>
+    <title>Architecture &amp; Ecosystem | Audio Analyser Pipeline</title>
+    <link href="https://audioanalyser.com/about/"/>
+    <id>https://audioanalyser.com/about/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Technical architecture, signal processing pipeline, Rust DSP engine, Python AI integrations, and WebAudio components powering Audio Analyser.</summary>
+    <author><name>Sébastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>Accessibility Statement | WCAG 2.2 AA / AAA Standards</title>
+    <link href="https://audioanalyser.com/accessibility/"/>
+    <id>https://audioanalyser.com/accessibility/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Comprehensive accessibility statement for Audio Analyser: WCAG 2.2 AA / AAA conformance, keyboard navigability, 7:1 contrast, and screen reader verification.</summary>
+    <author><name>Sébastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>Contact &amp; Developer Support | Audio Analyser</title>
+    <link href="https://audioanalyser.com/contact/"/>
+    <id>https://audioanalyser.com/contact/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Connect with the Audio Analyser maintainers for technical support, open-source issues, and enterprise acoustic DSP integration inquiries.</summary>
+    <author><name>Sébastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>Documentation &amp; Quick Start | Python SDK &amp; CLI</title>
+    <link href="https://audioanalyser.com/documentation/"/>
+    <id>https://audioanalyser.com/documentation/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Complete developer guide for Audio Analyser: PyPI package installation, Python SDK examples, CLI commands, and Docker microservice deployment.</summary>
+    <author><name>Sébastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>Features | Fast Fourier Transform, Speech-to-Text &amp; DSP</title>
+    <link href="https://audioanalyser.com/features/"/>
+    <id>https://audioanalyser.com/features/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection.</summary>
+    <author><name>Sébastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>Made with SSG | High-Performance Static Architecture</title>
+    <link href="https://audioanalyser.com/made-with-ssg/"/>
+    <id>https://audioanalyser.com/made-with-ssg/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Website created with Static Site Generator (SSG) — engineered for sub-50ms TTFB, zero tracking cookies, 100/100 Lighthouse metrics, and WCAG AAA compliance.</summary>
+    <author><name>Sébastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>Privacy Policy | Zero-Tracking &amp; UK GDPR Compliance</title>
+    <link href="https://audioanalyser.com/privacy/"/>
+    <id>https://audioanalyser.com/privacy/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Official privacy policy for Audio Analyser: zero tracking cookies, no cross-site analytics, local preference storage, and UK / EU GDPR data protection rights.</summary>
+    <author><name>Sébastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>Terms of Use | Dual Open-Source Licensing (Apache-2.0 &amp; MIT)</title>
+    <link href="https://audioanalyser.com/terms/"/>
+    <id>https://audioanalyser.com/terms/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Official terms of use governing access, package downloads, software use, and dual Apache-2.0 &amp; MIT open-source licensing for Audio Analyser.</summary>
+    <author><name>Sébastien Rousseau</name></author>
   </entry>
 </feed>

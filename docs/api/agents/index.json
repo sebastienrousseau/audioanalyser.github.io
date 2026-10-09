@@ -1,7 +1,7 @@
 {
   "api": "ssg-agent-api",
   "counts": {
-    "posts": 0,
+    "posts": 9,
     "topics": 0
   },
   "links": {
@@ -17,5 +17,5 @@
     "title": "Audio Analyser | High-Performance Audio Processing CLI",
     "url": "https://audioanalyser.com"
   },
-  "version": "0.0.56"
+  "version": "0.0.66"
 }

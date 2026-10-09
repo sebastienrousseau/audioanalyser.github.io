@@ -1,16 +1,11 @@
 {
-  "name": "Audio Analyser",
-  "short_name": "AudioAnalyser",
-  "description": "Real-time acoustic analysis and signal processing suite.",
-  "start_url": "/",
-  "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0056b3",
-  "icons": [
-    {
-      "src": "https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg",
-      "sizes": "192x192 512x512",
-      "type": "image/svg+xml"
-    }
-  ]
+  "description": "Real-time acoustic signal processing suite featuring sub-5ms Fast Fourier Transform (FFT) analytics, automated speech recognition, and sentiment scoring.",
+  "display": "standalone",
+  "name": "Audio Analyser",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "short_name": "AA",
+  "start_url": ".",
+  "theme_color": null
 }

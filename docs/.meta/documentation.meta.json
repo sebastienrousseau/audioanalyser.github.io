@@ -1,0 +1,14 @@
+{
+  "author": "Sébastien Rousseau",
+  "date": "2026-08-31",
+  "description": "Complete developer guide for Audio Analyser: PyPI package installation, Python SDK examples, CLI commands, and Docker microservice deployment.",
+  "keywords": "Audio Analyser Documentation, Python Audio SDK, PyPI Audio Analyser, CLI Audio Processing, Fast Fourier Transform Code, Docker Audio Microservice",
+  "language": "en-GB",
+  "layout": "documentation",
+  "name": "Audio Analyser",
+  "permalink": "https://audioanalyser.github.io/documentation/index.html",
+  "reading_time": 1,
+  "short_name": "AA",
+  "title": "Documentation & Quick Start | Python SDK & CLI",
+  "word_count": 214
+}

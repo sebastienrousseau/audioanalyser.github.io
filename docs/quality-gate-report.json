@@ -1,0 +1,79 @@
+{
+  "pages_scanned": 9,
+  "passed_pillars": 7,
+  "total_pillars": 10,
+  "pass_rate": 70.0,
+  "total_issues": 27,
+  "pillars": {
+    "1. Output & Essential Files": {
+      "pass": true,
+      "issues": []
+    },
+    "10. Accessibility & Semantic Hierarchy": {
+      "pass": true,
+      "issues": []
+    },
+    "2. Meta Leaks & Content Hygiene": {
+      "pass": true,
+      "issues": []
+    },
+    "3. CSP & Security Integrity": {
+      "pass": false,
+      "issues": [
+        "about/index.html: Missing Content-Security-Policy meta tag",
+        "accessibility/index.html: Missing Content-Security-Policy meta tag",
+        "contact/index.html: Missing Content-Security-Policy meta tag",
+        "documentation/index.html: Missing Content-Security-Policy meta tag",
+        "features/index.html: Missing Content-Security-Policy meta tag",
+        "index.html: Missing Content-Security-Policy meta tag",
+        "made-with-ssg/index.html: Missing Content-Security-Policy meta tag",
+        "privacy/index.html: Missing Content-Security-Policy meta tag",
+        "terms/index.html: Missing Content-Security-Policy meta tag"
+      ]
+    },
+    "4. SRI Hashes Sync": {
+      "pass": true,
+      "issues": []
+    },
+    "5. Hero Banner Subpage Isolation": {
+      "pass": true,
+      "issues": []
+    },
+    "6. Apple HIG Navbar & Footer Hygiene": {
+      "pass": false,
+      "issues": [
+        "about/index.html: Missing responsive navbar",
+        "about/index.html: Footer missing 'Made with SSG' link",
+        "accessibility/index.html: Missing responsive navbar",
+        "accessibility/index.html: Footer missing 'Made with SSG' link",
+        "contact/index.html: Missing responsive navbar",
+        "contact/index.html: Footer missing 'Made with SSG' link",
+        "documentation/index.html: Missing responsive navbar",
+        "documentation/index.html: Footer missing 'Made with SSG' link",
+        "features/index.html: Missing responsive navbar",
+        "features/index.html: Footer missing 'Made with SSG' link",
+        "index.html: Missing responsive navbar",
+        "index.html: Footer missing 'Made with SSG' link",
+        "made-with-ssg/index.html: Missing responsive navbar",
+        "privacy/index.html: Missing responsive navbar",
+        "privacy/index.html: Footer missing 'Made with SSG' link",
+        "terms/index.html: Missing responsive navbar",
+        "terms/index.html: Footer missing 'Made with SSG' link"
+      ]
+    },
+    "7. Theme, Search & Lightbox Engines": {
+      "pass": true,
+      "issues": []
+    },
+    "8. Forms & Link Integrity": {
+      "pass": false,
+      "issues": [
+        "contact/index.html: Contact page missing functional form action"
+      ]
+    },
+    "9. CloudCDN Asset Resolution": {
+      "pass": true,
+      "issues": []
+    }
+  }
+}

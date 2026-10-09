@@ -1,0 +1,90 @@
+
+  /* Photo Lightbox Modal */
+  .photo-lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .photo-lightbox-modal.active {
+    display: flex !important;
+  }
+  .photo-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .photo-lightbox-content {
+    position: relative;
+    max-width: 94vw;
+    max-height: 94vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    animation: lightboxZoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes lightboxZoomIn {
+    from { opacity: 0; transform: scale(0.94); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .photo-lightbox-media-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 90vw;
+    max-height: 82vh;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+  }
+  .photo-lightbox-close {
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    font-size: 1.1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 20 !important;
+    line-height: 1 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .photo-lightbox-close:hover {
+    background: rgba(0, 0, 0, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: scale(1.1) !important;
+  }
+  .photo-lightbox-img {
+    max-width: 90vw;
+    max-height: 82vh;
+    object-fit: contain;
+    display: block;
+    border-radius: 16px;
+  }
+  .photo-lightbox-caption {
+    margin-top: 1rem;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    max-width: 48rem;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+  }
+  .photo-card, .photo-img-wrapper, .gallery-card, .gallery-img-wrapper {
+    cursor: pointer;
+  }

@@ -17,3 +17,30 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), geolocation=(), microphone=()
+
+/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-puyxZFUiI2UaBFSj6rgnFQacvAlFM1L8YBWxxojysB0='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/about/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-QFCh3XYcA66Q9tc1Efl3gPQVHMLb5kgyD7ZQVkuo99M='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/accessibility/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-Uf6AdHO/T4/mGt3nfjjuxXcA3D/4056HE7NaFvxVV3o='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/contact/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-BQB0r+WWSORyU/JsN5igdwboEQWFKIel13ta4FYxpCs='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/documentation/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-Ag63LBV/8pPmjxJcvAz2bIzIZ5Ca7Vfps6j8g5A+uG8='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/features/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-5zUdA9guTCFqDmNZcX0qjPEt5g2lMFxjHAvidaR+Bpg='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/made-with-ssg/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-yfAJiNWb726MiB48aeMmSD3XzSE+e0rUZ5FTB2usBOs='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/privacy/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-hlbIEPXH2+vUZReYIZz0dnk5Wa/fKIVbfwbqLtX+yzc='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'
+
+/terms/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-aLPA+KZf6wc8FLgMrnORXdtGjP4cQsaxJPxDoFVcPls='; style-src 'self'; img-src 'self' https: data:; font-src 'self' https:; connect-src 'self'; frame-ancestors 'none'

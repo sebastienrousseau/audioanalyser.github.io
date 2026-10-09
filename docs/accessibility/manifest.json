@@ -1,0 +1,19 @@
+{
+  "background_color": "#ffffff",
+  "description": "Comprehensive accessibility statement for Audio Analyser: WCAG 2.2 AA / AAA conformance, keyboard navigability, 7:1 cont",
+  "display": "standalone",
+  "icons": [
+    {
+      "purpose": "any maskable",
+      "sizes": "512x512",
+      "src": "",
+      "type": "image/svg+xml"
+    }
+  ],
+  "name": "Audio Analyser",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "short_name": "AA",
+  "start_url": ".",
+  "theme_color": null
+}

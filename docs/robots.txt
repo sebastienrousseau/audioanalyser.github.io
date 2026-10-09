@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://audioanalyser.com/sitemap.xml
+Sitemap: https://audioanalyser.github.io/sitemap.xml
