@@ -1,20 +1,28 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
+<!--
+README template. Global rules: see ~/Code/AGENTS.md and ~/Code/REPO-STANDARD.md.
+Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/releases/tag/v0.0.5
+-->
 
 <p align="center">
-  <img src="https://cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg" alt="Audio Analyser logo" width="128" />
+  <img src="static/logo.svg" alt="Audio Analyser logo" width="128" />
 </p>
 
 <h1 align="center">Audio Analyser</h1>
 
 <p align="center">
-  Real-time acoustic analysis and signal processing suite with zero-latency WebAudio visualization and DSP algorithms.
+  A Python command-line tool and local dashboard that records audio, transcribes it with Azure AI Speech, analyses the text with Azure AI Language and writes recommendations with the language model you choose.
 </p>
 
 <p align="center">
-  <a href="https://github.com/sebastienrousseau/audioanalyser.github.io/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/audioanalyser.github.io/ci.yml?style=for-the-badge&logo=github" alt="Build" /></a>
-  <a href="https://github.com/sebastienrousseau/audioanalyser.github.io/releases"><img src="https://img.shields.io/github/v/release/sebastienrousseau/audioanalyser.github.io?style=for-the-badge&color=fc8d62&logo=git" alt="Release" /></a>
-  <a href="https://static-site-generator.com/"><img src="https://img.shields.io/badge/SSG-0.0.56-66c2a5?style=for-the-badge&labelColor=555555&logo=rust" alt="Built with SSG" /></a>
-  <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/audioanalyser.github.io"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/audioanalyser.github.io?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" /></a>
+  <a href="https://github.com/sebastienrousseau/audioanalyser.github.io/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/audioanalyser.github.io/ci.yml?style=for-the-badge&logo=github" alt="Build" height="28" /></a>
+  <a href="https://github.com/sebastienrousseau/audioanalyser.github.io/releases"><img src="https://img.shields.io/github/v/release/sebastienrousseau/audioanalyser.github.io?style=for-the-badge&logo=github" alt="Release" height="28" /></a>
+  <a href="https://sebastienrousseau.com/audioanalyser.github.io/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fsebastienrousseau.com%2Faudioanalyser.github.io%2F&style=for-the-badge&labelColor=555555&label=website" alt="Website" height="28" /></a>
+  <a href="LICENSE-MIT"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
+</p>
+
+<p align="center">
+  <img src="static/images/screenshot.png" alt="The Audio Analyser website home page: the masthead, the headline Turn recordings into transcripts, analysis and recommendations, and cards for speech to text, text analysis and six recommendation providers" width="100%" />
 </p>
 
 ---
@@ -23,105 +31,220 @@
 
 **Getting started**
 
-- [Overview](#overview) — architecture and design principles
-- [Quick Start](#quick-start) — build and serve locally in minutes
+- [Install](#install): from a clone of this repository
+- [Requirements](#requirements): Python, PortAudio, Azure resources
+- [Quick Start](#quick-start): record, transcribe, analyse, summarise
 
-**Ecosystem & Architecture**
+**The Audio Analyser ecosystem**
 
-- [Features](#features) — core capabilities and performance highlights
-- [Technology Stack](#technology-stack) — SSG, Rust, and modern web standards
-- [Accessibility & Compliance](#accessibility--compliance) — 100% WCAG 2.1 AAA and Lighthouse scores
+- [The Audio Analyser ecosystem](#the-audio-analyser-ecosystem): the application, its dashboard and its website
+
+**Library reference**
+
+- [Capabilities at a glance](#capabilities-at-a-glance): the commands by task
+- [Ecosystem comparison](#ecosystem-comparison): not published
+- [Benchmarks](#benchmarks): not published
+- [Features](#features): modules
+- [Configuration](#configuration): environment variables
+- [Examples](#examples): command examples
 
 **Operational**
 
-- [Development](#development) — make targets, quality gates, and automated testing
-- [Security](#security) — Subresource Integrity (SRI) and Content Security Policy (CSP)
-- [License](#license) — dual Apache-2.0 and MIT licensing
+- [When not to use Audio Analyser](#when-not-to-use-audio-analyser): limitations
+- [Development](#development): tests, linters, the website build
+- [Security](#security): where data goes, reporting
+- [Documentation](#documentation): where each part is described
+- [Stability guarantees](#stability-guarantees): versions and URLs
+- [License](#license)
 
 ---
 
-## Overview
+## Install
 
-`audioanalyser.github.io` is engineered for speed, privacy, and accessibility. Built with **Static Site Generator (SSG)** and the **Skeletonic Design System**, it delivers lightning-fast static page generation, zero third-party tracking cookies, and responsive Apple Human Interface Guidelines (HIG) navigation.
+### As a Python application
+
+```bash
+git clone https://github.com/sebastienrousseau/audioanalyser.github.io.git
+cd audioanalyser.github.io
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+cp env.example .env   # then fill in your keys and folders
+```
+
+`requirements.txt` pins every dependency with hashes. The `audioanalyser`
+package on PyPI is version 0.0.6 from February 2024 and predates the
+recommendation providers, so install from a clone.
+
+---
+
+## Requirements
+
+- **Python** 3.10 or newer; CI runs on 3.10.
+- **PortAudio**, for PyAudio (`portaudio19-dev` on Debian and Ubuntu).
+  PyAudio publishes wheels for Windows only.
+- **Azure resources**: Speech, Language, and Translator if you translate.
+- **A recommendation provider**: an OpenAI, Anthropic or Gemini key, a
+  local Ollama server, or a signed-in Claude Code or Agy CLI.
 
 ---
 
 ## Quick Start
 
-### Prerequisites
-
-Ensure you have `ssg` installed via Cargo:
-
 ```bash
-cargo install ssg
+python -m audioanalyser -rec              # record ten seconds
+python -m audioanalyser -stt meeting.wav  # transcribe with Azure AI Speech
+python -m audioanalyser -ta               # analyse every transcript
+python -m audioanalyser -sum              # summaries and recommendations
+python -m audioanalyser -s                # dashboard on http://127.0.0.1:8080/
 ```
 
-### Local Build & Development
+---
 
-Clone the repository and compile the static assets:
+## The Audio Analyser ecosystem
 
-```bash
-git clone https://github.com/sebastienrousseau/audioanalyser.github.io.git
-cd audioanalyser.github.io
+| Component | Purpose | Use case |
+| :--- | :--- | :--- |
+| `audioanalyser/` | The Python application and its command line | Processing recordings |
+| `dashboard/` | The web UI the `-s` server serves on port 8080 | Working from a browser |
+| `_posts/`, `_layouts/` | The website, built with Static Site Generator and the Prism theme | Changing the website |
 
-# Compile with Static Site Generator (SSG)
-ssg build --content _posts --template _layouts --output docs
+---
 
-# Or serve locally using Makefile
-make serve
-```
+## Capabilities at a glance
+
+| Task | Command | Service | Output |
+| :--- | :--- | :--- | :--- |
+| Record | `-rec [settings.json]` | Local microphone | `INPUT_FOLDER` |
+| Transcribe | `-stt <file>` | Azure AI Speech | `TRANSCRIPTS_FOLDER`, SQLite |
+| Analyse | `-ta` | Azure AI Language | `REPORTS_FOLDER`, SQLite |
+| Recommend | `-sum` | `LLM_PROVIDER` | `RECOMMENDATIONS_FOLDER` |
+| Translate | `-t <codes...>` | Azure AI Translator | `TRANSLATIONS_FOLDER` |
+| Speak | `-tts <text> <name>` | Azure AI Speech | `RECORDS_FOLDER` |
+| Dashboard | `-s` | Local server | Port 8080 |
+
+---
+
+## Ecosystem comparison
+
+Not published: no comparison with other tools has been measured.
+
+---
+
+## Benchmarks
+
+Not published: no benchmarks have been measured.
 
 ---
 
 ## Features
 
-- **Static Site Generator (SSG) Compilation**: High-throughput Markdown and Tera template processing with pre-rendered HTML.
-- **Apple HIG Responsive Navigation**: Sticky blur glass header with horizontal/vertical element alignment, squarcle buttons, and mobile hamburger drawer.
-- **Subresource Integrity (SRI)**: SHA-384 cryptographic hashing on all external and internal stylesheets and scripts.
-- **Content Security Policy (CSP)**: Hardened security headers restricting unvetted origins while permitting high-performance execution.
-- **Full Client Search Engine**: Instant multi-term indexing and live modal search via `search-index.json`.
-- **System Theme Auto-Detection**: Instant switching between Light, Dark, and System modes with zero visual flash.
-- **100% WCAG AAA Compliance**: High contrast ratios, full keyboard navigation, ARIA landmarks, and semantic heading hierarchies.
+- `audio_recorder`: microphone recording with PyAudio; mono, 16-bit,
+  44.1 kHz and ten seconds by default.
+- `transcribe_audio_files`: continuous recognition with Azure AI Speech;
+  text, JSON and SQLite output.
+- `analyze_text_files`: sentiment, entities, key phrases and language with
+  Azure AI Language.
+- `azure_recommendation` and `llm_providers`: summaries and
+  recommendations from `openai` (default), `anthropic`, `gemini`,
+  `ollama`, `claude-cli` or `agy-cli`.
+- `azure_translator` and `text_to_speech`: Azure AI Translator and speech
+  synthesis.
+- `speech_text_server`: a CherryPy server for the dashboard and its HTTP
+  endpoints.
 
 ---
 
-## Technology Stack
+## Configuration
 
-| Component | Technology | Description |
-|---|---|---|
-| **Static Engine** | [Static Site Generator (SSG)](https://static-site-generator.com/) | High-speed Rust static site generator |
-| **Design Framework** | [Skeletonic CSS](https://skeletonic.io) | Minimalist, zero-dependency layout engine |
-| **Icons & Assets** | [CloudCDN](https://cloudcdn.pro) | Distributed edge CDN for SVG vector assets |
-| **Runtime** | Vanilla ECMAScript | Zero runtime framework overhead |
+Settings are environment variables, normally in a `.env` file;
+`env.example` documents most of them. The full list, by module, is on the
+website's [reference page](https://sebastienrousseau.com/audioanalyser.github.io/documentation/).
+`LLM_PROVIDER` picks the recommendation backend and `LLM_MODEL` overrides
+its default model.
+
+---
+
+## Examples
+
+```bash
+python -m audioanalyser -rec settings.json
+python -m audioanalyser -t fr de
+python -m audioanalyser -tts "hello" greeting
+LLM_PROVIDER=ollama python -m audioanalyser -sum
+```
+
+---
+
+## When not to use Audio Analyser
+
+- **Offline transcription.** Transcription, analysis, translation and
+  speech all call Azure; only recommendations can stay local, with Ollama.
+- **A shared or public server.** The dashboard has no authentication.
+- **A one-command pipeline.** Each run performs one task.
 
 ---
 
 ## Development
 
-Run automated regression tests and the 10-pillar quality audit:
+```bash
+pip install -r requirements.txt pytest pytest-cov flake8 pylint bandit
+pytest                                  # 95% coverage floor
+flake8 && pylint audioanalyser/ && bandit -c .bandit.yml -r audioanalyser/
+```
+
+The tests stub PyAudio when PortAudio is missing and deselect the live
+Ollama tests (`pytest -m integration` runs them).
+
+The website:
 
 ```bash
-# Run repository regression test
-python3 scripts/regression-test.py
-
-# Run portfolio master quality gate
-make test
+make build       # contrast, ssg build, anchors, post-build checks, og images, ssg audit
+make serve       # build and serve on http://127.0.0.1:8000/audioanalyser.github.io/
+make screenshot  # render static/images/screenshot.png from the build
 ```
+
+`make build` needs ssg 0.0.69 or newer, Python 3.11 or newer and Chrome or
+Chromium (set `CHROME`). `.github/workflows/ci.yml` tests and lints the
+application; `quality-gate.yml` builds the website on pull requests and
+`pages.yml` builds and deploys it from `main`.
 
 ---
 
 ## Security
 
-Every deployment adheres to strict security and integrity standards:
+Audio goes to Azure AI Speech, and transcripts to Azure AI Language, Azure
+AI Translator and the recommendation provider you choose; results stay in
+local folders and SQLite. Keys live in `.env`, which `.gitignore`
+excludes. The website carries a strict Content Security Policy and
+Subresource Integrity hashes, checked on every build.
 
-- **Zero Inline Code Execution**: All scripts are isolated and digest-verified.
-- **Cryptographic Asset Integrity**: Guaranteed Subresource Integrity via SHA-384 digests.
-- **Privacy by Default**: No user tracking, analytics cookies, or third-party fingerprinting.
+Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
+
+---
+
+## Documentation
+
+- The website: <https://sebastienrousseau.com/audioanalyser.github.io/>
+- Environment variables: [`env.example`](env.example)
+- Releases: <https://github.com/sebastienrousseau/audioanalyser.github.io/releases>
+- Third-party licences for the website theme: [`LICENSES/`](LICENSES/)
+
+---
+
+## Stability guarantees
+
+Releases are tagged `v0.0.x` and step by 0.0.1; any release may change the
+command line or configuration. The website keeps the page URLs that still
+have content: `/about/`, `/accessibility/`, `/contact/`, `/documentation/`,
+`/features/`, `/made-with-ssg/`, `/privacy/` and `/terms/`, under
+`https://sebastienrousseau.com/audioanalyser.github.io/`.
 
 ---
 
 ## License
 
-Copyright © 2024 - 2026 Sebastien Rousseau. All rights reserved.
-
-Licensed under the Apache License, Version 2.0 or the MIT license at your option.
+The source is available under [Apache-2.0](LICENSE-APACHE) or
+[MIT](LICENSE-MIT), at your option. The Prism theme files in `_layouts/`
+are MIT-licensed; see [`LICENSES/`](LICENSES/). The logo in
+`static/logo.svg` is Audio Analyser's, from
+`cloudcdn.pro/audioanalyser/v1/logos/audioanalyser.svg`.
