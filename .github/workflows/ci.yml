@@ -10,6 +10,11 @@ on:
       - main
       - "feat/*"
 
+# Read-only by default; only the release job writes, to create the
+# GitHub release and upload its assets.
+permissions:
+  contents: read
+
 jobs:
   # This job reads the version number from setup.cfg and sets it as an
   # environment variable
@@ -121,6 +126,8 @@ jobs:
   build:
     needs: [version, pytest]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       TWINE_USERNAME: __token__
       TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
