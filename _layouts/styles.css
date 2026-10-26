@@ -1,0 +1,1927 @@
+/*!
+ * Prism — financial-infrastructure marketing theme for Static Site Generator (SSG).
+ *
+ * Token contract
+ * --------------
+ * Every colour below is gated by `scripts/contrast.py`, which parses the
+ * `:root` blocks and asserts the pairs it declares. Text tokens clear
+ * WCAG 1.4.6 (AAA, 7:1); borders and the focus ring clear WCAG 1.4.11
+ * (3:1). Change a value and the gate re-checks it — do not hand-tune a
+ * colour without running `make check`.
+ *
+ * Besides the shared vocabulary (`--ink`, `--surface`, `--accent`, ...)
+ * this theme carries three more sets, each gated under its own name:
+ *
+ *   --hero-*   the navy masthead, the hero band and the developer panel,
+ *              which are dark in both colour schemes
+ *   --code-*   the syntax colours in the developer panel's code window
+ *   --green/--clay/--gold/--burgundy  the four semantic tints, each a
+ *              text token on a soft ground
+ *
+ * The category this theme belongs to — enterprise fintech marketing —
+ * conventionally opens with a mesh gradient behind the hero copy. Here the
+ * gradient sits behind the mock-ups only and the copy sits on solid navy,
+ * because a gradient cannot be contrast-checked.
+ *
+ * Layers keep specificity flat so a site can override any component from
+ * its own stylesheet without `!important`.
+ */
+@layer reset, tokens, base, layout, components, utilities;
+
+@layer tokens {
+  /* Light — the default, and what an unstamped `prefers-color-scheme:
+     light` viewer sees. */
+  :root,
+  :root[data-theme="light"] {
+    --bg: #fafafa;
+    --bg-soft: #f2f4f7;
+    --surface: #ffffff;
+    --surface-soft: #f2f4f7;
+
+    --ink: #111111;
+    --ink-soft: #3a3d42;
+    --ink-muted: #4a4e55;
+
+    --accent: #004c9e;
+    --accent-hover: #003c7d;
+    --accent-ink: #ffffff;
+    --accent-soft: #e3f0ff;
+    --on-accent-soft: #003c7d;
+
+    --line: #767a81;
+    --line-soft: #e3e5e9;
+    --focus: #1270d6;
+
+    /* Semantic tints: a text token on a soft ground, each pair gated. */
+    --green-text: #1b4332;
+    --green-soft: #e6f2ec;
+    --green: #2d6a4f;
+    --clay-text: #7d3119;
+    --clay-soft: #f6e7e1;
+    --gold-text: #5e420b;
+    --gold-soft: #f7f0e1;
+    --burgundy-text: #7a1514;
+    --burgundy-soft: #fbe9e8;
+
+    /* The dark surfaces, the same in both schemes. */
+    --hero-bg: #111111;
+    --hero-surface: #1e1e20;
+    --hero-ink: #ffffff;
+    --hero-ink-soft: #d4d4d8;
+    --hero-line: #75757c;
+    --hero-accent: #8cc6ff;
+    --hero-clay: #ff9c99;
+    --hero-gold: #8cc6ff;
+    --hero-stage: rgb(30 30 32 / 55%);
+
+    /* Icon-badge gradient stops. Tokens rather than literals inside the
+       component rule, so `scripts/contrast.py` can hold the white glyph
+       they carry to WCAG 1.4.11 (3:1) against the *lightest* stop — the
+       one that decides whether the icon is visible. Two of these were
+       hand-picked at 2.5:1 before the gate covered them. */
+    --badge-ink: #ffffff;
+    --badge-blue-from: #004c9e;
+    --badge-blue-to: #0b62c4;
+    --badge-clay-from: #b05a3f;
+    --badge-clay-to: #cf7e66;
+    --badge-green-from: #2d6a4f;
+    --badge-green-to: #40916c;
+    --badge-gold-from: #8f7036;
+    --badge-gold-to: #af8e4f;
+    --badge-burgundy-from: #9e1f1d;
+    --badge-burgundy-to: #c02a27;
+    --badge-navy-from: #111111;
+    --badge-navy-to: #3a3d42;
+
+    /* Code window. */
+    --code-bg: #0a0a0b;
+    --code-bar: #161618;
+    --code-plain: #f4f4f5;
+    --code-keyword: #8cc6ff;
+    --code-function: #ffb3b0;
+    --code-string: #fde68a;
+    --code-comment: #b4b4bc;
+    --code-property: #c4e1ff;
+    --code-number: #86efac;
+
+    --shadow-sm: 0 1px 3px rgb(17 17 17 / 8%);
+    --shadow-md: 0 12px 32px -12px rgb(17 17 17 / 22%);
+    --shadow-lg: 0 30px 60px -24px rgb(17 17 17 / 35%);
+
+    color-scheme: light;
+  }
+
+  /* Dark — redefine tokens only. Guarded so an explicit light choice
+     still wins on a dark OS. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0a0b;
+      --bg-soft: #0f0f11;
+      --surface: #17171a;
+      --surface-soft: #202024;
+
+      --ink: #fafafa;
+      --ink-soft: #d4d4d8;
+      --ink-muted: #b4b4bc;
+
+      --accent: #8cc6ff;
+      --accent-hover: #c4e1ff;
+      --accent-ink: #111111;
+      --accent-soft: #0b2a4d;
+      --on-accent-soft: #dbeafe;
+
+      --line: #75757c;
+      --line-soft: #27272a;
+      --focus: #4ea5ff;
+
+      --green-text: #a7dcc1;
+      --green-soft: #173628;
+      --green: #6cc39a;
+      --clay-text: #f4b39a;
+      --clay-soft: #3d2418;
+      --gold-text: #e6cb8b;
+      --gold-soft: #3a2f14;
+      --burgundy-text: #ffb3b0;
+      --burgundy-soft: #3d1716;
+
+      --hero-bg: #111111;
+      --hero-surface: #1e1e20;
+      --hero-ink: #ffffff;
+      --hero-ink-soft: #d4d4d8;
+      --hero-line: #75757c;
+      --hero-accent: #8cc6ff;
+      --hero-clay: #ff9c99;
+      --hero-gold: #8cc6ff;
+      --hero-stage: rgb(30 30 32 / 55%);
+
+      /* Icon-badge gradient stops. Tokens rather than literals inside the
+         component rule, so `scripts/contrast.py` can hold the white glyph
+         they carry to WCAG 1.4.11 (3:1) against the *lightest* stop — the
+         one that decides whether the icon is visible. Two of these were
+         hand-picked at 2.5:1 before the gate covered them. */
+      --badge-ink: #ffffff;
+      --badge-blue-from: #004c9e;
+      --badge-blue-to: #0b62c4;
+      --badge-clay-from: #b05a3f;
+      --badge-clay-to: #cf7e66;
+      --badge-green-from: #2d6a4f;
+      --badge-green-to: #40916c;
+      --badge-gold-from: #8f7036;
+      --badge-gold-to: #af8e4f;
+      --badge-burgundy-from: #9e1f1d;
+      --badge-burgundy-to: #c02a27;
+      --badge-navy-from: #111111;
+      --badge-navy-to: #3a3d42;
+
+      --code-bg: #0a0a0b;
+      --code-bar: #161618;
+      --code-plain: #f4f4f5;
+      --code-keyword: #8cc6ff;
+      --code-function: #ffb3b0;
+      --code-string: #fde68a;
+      --code-comment: #b4b4bc;
+      --code-property: #c4e1ff;
+      --code-number: #86efac;
+
+      --shadow-sm: 0 1px 3px rgb(0 0 0 / 55%);
+      --shadow-md: 0 12px 32px -12px rgb(0 0 0 / 70%);
+      --shadow-lg: 0 30px 60px -24px rgb(0 0 0 / 80%);
+
+      color-scheme: dark;
+    }
+  }
+
+  /* The toggle wins in both directions. */
+  :root[data-theme="dark"] {
+    --bg: #0a0a0b;
+    --bg-soft: #0f0f11;
+    --surface: #17171a;
+    --surface-soft: #202024;
+
+    --ink: #fafafa;
+    --ink-soft: #d4d4d8;
+    --ink-muted: #b4b4bc;
+
+    --accent: #8cc6ff;
+    --accent-hover: #c4e1ff;
+    --accent-ink: #111111;
+    --accent-soft: #0b2a4d;
+    --on-accent-soft: #dbeafe;
+
+    --line: #75757c;
+    --line-soft: #27272a;
+    --focus: #4ea5ff;
+
+    --green-text: #a7dcc1;
+    --green-soft: #173628;
+    --green: #6cc39a;
+    --clay-text: #f4b39a;
+    --clay-soft: #3d2418;
+    --gold-text: #e6cb8b;
+    --gold-soft: #3a2f14;
+    --burgundy-text: #ffb3b0;
+    --burgundy-soft: #3d1716;
+
+    --hero-bg: #111111;
+    --hero-surface: #1e1e20;
+    --hero-ink: #ffffff;
+    --hero-ink-soft: #d4d4d8;
+    --hero-line: #75757c;
+    --hero-accent: #8cc6ff;
+    --hero-clay: #ff9c99;
+    --hero-gold: #8cc6ff;
+    --hero-stage: rgb(30 30 32 / 55%);
+
+    /* Icon-badge gradient stops. Tokens rather than literals inside the
+       component rule, so `scripts/contrast.py` can hold the white glyph
+       they carry to WCAG 1.4.11 (3:1) against the *lightest* stop — the
+       one that decides whether the icon is visible. Two of these were
+       hand-picked at 2.5:1 before the gate covered them. */
+    --badge-ink: #ffffff;
+    --badge-blue-from: #004c9e;
+    --badge-blue-to: #0b62c4;
+    --badge-clay-from: #b05a3f;
+    --badge-clay-to: #cf7e66;
+    --badge-green-from: #2d6a4f;
+    --badge-green-to: #40916c;
+    --badge-gold-from: #8f7036;
+    --badge-gold-to: #af8e4f;
+    --badge-burgundy-from: #9e1f1d;
+    --badge-burgundy-to: #c02a27;
+    --badge-navy-from: #111111;
+    --badge-navy-to: #3a3d42;
+
+    --code-bg: #0a0a0b;
+    --code-bar: #161618;
+    --code-plain: #f4f4f5;
+    --code-keyword: #8cc6ff;
+    --code-function: #ffb3b0;
+    --code-string: #fde68a;
+    --code-comment: #b4b4bc;
+    --code-property: #c4e1ff;
+    --code-number: #86efac;
+
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 55%);
+    --shadow-md: 0 12px 32px -12px rgb(0 0 0 / 70%);
+    --shadow-lg: 0 30px 60px -24px rgb(0 0 0 / 80%);
+
+    color-scheme: dark;
+  }
+
+  :root {
+    /* A fluid scale, so 200% zoom and 320px both stay on the ramp. */
+    --step--1: clamp(0.86rem, 0.83rem + 0.16vw, 0.95rem);
+    --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.13rem);
+    --step-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.45rem);
+    --step-2: clamp(1.5rem, 1.34rem + 0.8vw, 2rem);
+    --step-3: clamp(1.9rem, 1.6rem + 1.5vw, 2.9rem);
+    --step-4: clamp(2.3rem, 1.8rem + 2.6vw, 4rem);
+
+    --measure: 68ch;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --gap: clamp(1rem, 0.8rem + 1vw, 1.75rem);
+    --section-y: clamp(3rem, 2rem + 5vw, 6.5rem);
+
+    /* skeletonic's topbar: the navy masthead, in both schemes. */
+    --topbar-height: 4.25rem;
+    --topbar-max-width: 78rem;
+    --topbar-gutter: 1rem;
+    --topbar-bg: var(--hero-bg);
+    --topbar-fg: var(--hero-ink);
+    --topbar-line: var(--hero-line);
+    --topbar-muted: var(--hero-ink-soft);
+    --topbar-link-color: var(--hero-ink-soft);
+    --topbar-link-hover: var(--hero-ink);
+    --topbar-brand-weight: 800;
+    --topbar-font: var(--font-sans);
+    --topbar-font-size: var(--step--1);
+    --topbar-font-weight: 600;
+    --topbar-radius: 10px;
+    --topbar-control-bg: var(--hero-surface);
+    --topbar-control-fg: var(--hero-ink);
+    --topbar-control-border: var(--hero-line);
+
+    --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+      "Liberation Mono", monospace;
+  }
+}
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  ol,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  ul[class],
+  ol[class] {
+    list-style: none;
+    padding: 0;
+  }
+
+  img,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--step-0);
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.12;
+    text-wrap: balance;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  h1 {
+    font-size: var(--step-4);
+    letter-spacing: -0.035em;
+  }
+
+  h2 {
+    font-size: var(--step-3);
+  }
+
+  h3 {
+    font-size: var(--step-1);
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--accent);
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+  }
+
+  /* Wrapped rather than scrolled: a code block that never overflows needs
+     no scroll region, so there is nothing to make focusable and nothing
+     to reflow. */
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    padding: 1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    background: var(--surface-soft);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 0.7rem 0.8rem;
+    border-block-end: 1px solid var(--line-soft);
+    text-align: start;
+  }
+
+  th {
+    font-weight: 700;
+  }
+}
+
+@layer layout {
+  .container {
+    width: min(100% - 2rem, 76rem);
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: var(--section-y);
+  }
+
+  .stack > * + * {
+    margin-block-start: var(--gap);
+  }
+
+  .prose {
+    max-width: var(--measure);
+  }
+
+  .prose > * + * {
+    margin-block-start: 1em;
+  }
+
+  /* 1.4.8 Visual Presentation (AAA): paragraph spacing at least 1.5x line
+     spacing. `lh` states the requirement exactly; the em value is the
+     fallback. The generator wraps rendered Markdown in its own element, so
+     this must match inside that wrapper, not only direct children. */
+  .prose :where(p, ul, ol, pre, blockquote, table, dl, figure)
+    + :where(p, ul, ol, pre, blockquote, table, dl, figure) {
+    margin-block-start: 2.7em;
+    margin-block-start: 1.6lh;
+  }
+
+  .prose h2 {
+    margin-block-start: 1.8em;
+  }
+
+  .prose h2 + p {
+    margin-block-start: 0.6em;
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--gap);
+  }
+
+  /* auto-fit + minmax keeps every grid single-column at 320px without a
+     media query, which is what makes the 320px reflow check pass. */
+  .grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  }
+
+  .section-head {
+    max-width: 48rem;
+  }
+
+  .section-head-centred {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .section-head > * + * {
+    margin-block-start: 0.75rem;
+  }
+}
+
+@layer components {
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Parked off-screen until focused — never `display: none`, which would
+     take it out of the tab order entirely. */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 999;
+  }
+
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--ink);
+    border: 2px solid var(--focus);
+    text-decoration: none;
+  }
+
+  /* The masthead stays in view; skeletonic paints it from the tokens. */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .brand-word {
+    font-size: 1.5rem;
+    letter-spacing: -0.04em;
+  }
+
+  .brand-dot {
+    color: var(--hero-gold);
+  }
+
+  /* The mega-menu: an item with a panel holds its link, a disclosure
+     button and the panel, inside skeletonic's topbar list. The item is the
+     panel's containing block on the wide layout. */
+  .nav-item {
+    position: relative;
+  }
+
+  /* The disclosure beside a link. A control in its own right, so 44x44.
+     Its box must not overlap the link's: on touch a tap in the shared
+     strip lands on whichever is painted on top, which is a coin flip.
+     The pair is tightened with the link's padding instead of a negative
+     margin, so they meet without intersecting. */
+  .nav-disclosure {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--hero-ink-soft);
+    cursor: pointer;
+  }
+
+  .nav-disclosure:hover,
+  .nav-disclosure[aria-expanded="true"] {
+    background: var(--hero-surface);
+    color: var(--hero-ink);
+  }
+
+  .nav-disclosure svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .nav-disclosure[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+
+  /* The panel: a light surface in both schemes' own surface colour, so
+     its items use the ordinary --ink/--accent tokens. */
+  .nav-panel[hidden] {
+    display: none;
+  }
+
+  .nav-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 60;
+    margin-block-start: 0.6rem;
+    width: max-content;
+    max-width: min(38rem, calc(100vw - 2rem));
+    padding: 1rem;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Bridges the gap between the item and the panel so a pointer crossing
+     it does not leave the item and dismiss the panel. */
+  .nav-panel::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.6rem;
+    height: 0.6rem;
+  }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem 0.75rem;
+    margin: 0;
+  }
+
+  .panel-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.6rem;
+    border-radius: var(--radius);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .panel-item:hover {
+    background: var(--surface-soft);
+    color: var(--ink);
+  }
+
+  .panel-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 10px;
+    color: var(--badge-ink);
+  }
+
+  .panel-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .panel-text {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .panel-title {
+    font-weight: 700;
+    font-size: var(--step--1);
+  }
+
+  .panel-desc {
+    color: var(--ink-muted);
+    font-size: var(--step--1);
+    line-height: 1.4;
+  }
+
+  /* Header controls sit on navy, where the page focus colour is too dark
+     to be seen. The light accent clears 3:1 against the band. */
+  .topbar :focus-visible,
+  .hero :focus-visible,
+  .page-hero :focus-visible,
+  .section-dark :focus-visible {
+    outline-color: var(--hero-accent);
+  }
+
+  /* ---- buttons ---- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.35rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 700;
+    font-size: var(--step--1);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-color: var(--accent);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: var(--accent-ink);
+  }
+
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--ink);
+    border-color: var(--line);
+  }
+
+  .btn-secondary:hover {
+    background: var(--surface-soft);
+    color: var(--ink);
+  }
+
+  /* On the dark bands. */
+  .btn-hero-primary {
+    background: var(--hero-ink);
+    color: var(--hero-bg);
+    border-color: var(--hero-ink);
+  }
+
+  .btn-hero-primary:hover {
+    background: var(--hero-ink-soft);
+    border-color: var(--hero-ink-soft);
+    color: var(--hero-bg);
+  }
+
+  .btn-hero-secondary {
+    background: transparent;
+    color: var(--hero-ink);
+    border-color: var(--hero-line);
+  }
+
+  .btn-hero-secondary:hover {
+    background: var(--hero-surface);
+    color: var(--hero-ink);
+    border-color: var(--hero-ink-soft);
+  }
+
+  /* ---- eyebrow, tags, labels ---- */
+  .eyebrow {
+    color: var(--accent);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-hero {
+    color: var(--hero-accent);
+  }
+
+  .eyebrow-clay {
+    color: var(--hero-clay);
+  }
+
+  .eyebrow-green {
+    color: var(--green-text);
+  }
+
+  .lead {
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    max-width: 44ch;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-block-end: 0.75rem;
+  }
+
+  .tag-blue {
+    background: var(--accent-soft);
+    color: var(--on-accent-soft);
+  }
+
+  .tag-green {
+    background: var(--green-soft);
+    color: var(--green-text);
+  }
+
+  .tag-gold {
+    background: var(--gold-soft);
+    color: var(--gold-text);
+  }
+
+  .tag-clay {
+    background: var(--clay-soft);
+    color: var(--clay-text);
+  }
+
+  .section-label {
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-block-end: 1.5rem;
+  }
+
+  /* A single row that wraps, rather than a column that stacks: the CTA
+     pair reads as one decision. */
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  /* ---- hero ----
+     Solid navy behind every word. The slope is a pseudo-element painted
+     in the page ground over the band's foot, so no text ever sits on a
+     clipped or gradient edge. */
+  .hero,
+  .page-hero {
+    position: relative;
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    padding-block: clamp(3rem, 2rem + 6vw, 7rem) clamp(5rem, 3rem + 9vw, 11rem);
+  }
+
+  .page-hero {
+    padding-block-end: clamp(4rem, 2rem + 8vw, 8rem);
+  }
+
+  /* The sloped foot of the dark band.
+   *
+   * A real element, not a `::after` on the section. axe abandons its
+   * contrast check for every text node under an ancestor carrying a
+   * pseudo-element that could paint a background — "Element's background
+   * color could not be determined due to a pseudo element" — and pa11y
+   * counts that as an error. So the slope reported 28 findings across the
+   * six pages against a hero measuring 17.65:1, because the ratio could
+   * not be computed rather than because it was wrong.
+   *
+   * As an ordinary element axe composites it normally, and since it sits
+   * below every line of text it never becomes their background. */
+  .hero-slope {
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: clamp(2rem, 6vw, 5.5rem);
+    background: var(--bg);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    gap: clamp(2rem, 1rem + 4vw, 4rem);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: var(--gap);
+    max-width: 44rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-copy h1 {
+    color: var(--hero-ink);
+  }
+
+  .hero-lead {
+    color: var(--hero-ink-soft);
+    max-width: 40ch;
+  }
+
+  /* ---- hero mock-ups ----
+     A grid, not a pile of absolute positions: at 320px it is one column
+     and nothing can escape the viewport. */
+  .hero-stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--gap);
+    align-items: start;
+    padding: clamp(1rem, 0.5rem + 2vw, 2rem);
+    border-radius: var(--radius-lg);
+    /* Translucent, because the mesh below sits *behind* this background
+       rather than on top of it — see `.hero-glow`. Carries no text of its
+       own; every word in the stage is on an opaque card. */
+    background: var(--hero-stage);
+    border: 1px solid var(--hero-line);
+    overflow: hidden;
+  }
+
+  .hero-stage-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    /* This is the stage's decorative background, so it must fill the frame.
+       `contain` letterboxed the portrait asset and left navy gutters at both
+       inline edges on wide screens. */
+    object-fit: cover;
+    opacity: 0.28;
+    filter: saturate(0.55) contrast(1.1);
+  }
+
+  /* The mesh, confined to the stage. Behind the cards, which are solid. */
+  .hero-glow {
+    position: absolute;
+    inset: 6%;
+    border-radius: 45%;
+    background:
+      radial-gradient(at 15% 20%, #004c9e 0, transparent 50%),
+      radial-gradient(at 85% 15%, #1e90ff 0, transparent 45%),
+      radial-gradient(at 20% 80%, #9e1f1d 0, transparent 45%),
+      radial-gradient(at 80% 80%, #ff0000 0, transparent 50%),
+      radial-gradient(at 50% 50%, #0b62c4 0, transparent 40%);
+    filter: blur(40px);
+    pointer-events: none;
+    /* Behind the stage's own background, not among the cards.
+     *
+     * With the default `z-index: auto` this element shares a paint layer
+     * with the cards, and axe then refuses to compute a background colour
+     * for any text inside them — "could not be determined because it is
+     * overlapped by another element" — which pa11y counts as an error.
+     * That was 13 of the 28 findings this theme first produced, against
+     * card text measuring 16.65:1.
+     *
+     * A negative z-index puts it below the in-flow content of the nearest
+     * stacking context, so axe composites the cards normally and the mesh
+     * still shows through the translucent stage above it. */
+    z-index: -1;
+  }
+
+  .mock {
+    position: relative;
+    z-index: 1;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line-soft);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mock p {
+    margin: 0;
+  }
+
+  .mock-growth {
+    margin-block-start: clamp(0rem, 4vw, 3rem);
+  }
+
+  .mock-phone {
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    border: 4px solid var(--hero-line);
+    border-radius: 26px;
+    max-width: 16rem;
+    justify-self: end;
+  }
+
+  .mock-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .mock-row + .mock-label,
+  .mock-amount + .mock-row {
+    margin-block-start: 0.9rem;
+  }
+
+  .mock-chip {
+    display: block;
+    width: 36px;
+    height: 26px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #c5a059, #dfb86c);
+    border: 1px solid #a8843f;
+  }
+
+  .mock-icon {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+  }
+
+  .mock-label {
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .mock-label-clay {
+    color: var(--clay-text);
+  }
+
+  .mock-amount {
+    display: block;
+    margin-block-start: 0.25rem;
+    font-size: var(--step-2);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .mock-mono {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--ink-muted);
+  }
+
+  .mock-pill {
+    display: inline-block;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0;
+    background: var(--green-soft);
+    color: var(--green-text);
+  }
+
+  .mock-chart {
+    width: 100%;
+    height: 95px;
+    margin-block-start: 1rem;
+  }
+
+  .mock-notch {
+    display: block;
+    width: 64px;
+    height: 6px;
+    margin: 0 auto 1rem;
+    border-radius: 3px;
+    background: var(--hero-line);
+  }
+
+  .mock-notice {
+    padding: 0.85rem;
+    border-radius: 10px;
+    background: var(--hero-surface);
+    border: 1px solid var(--hero-line);
+  }
+
+  .mock-notice-title {
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--hero-clay);
+  }
+
+  .mock-notice-amount {
+    display: block;
+    font-weight: 800;
+    margin-block-start: 0.2rem;
+  }
+
+  .mock-notice-meta {
+    font-size: var(--step--1);
+    color: var(--hero-ink-soft);
+    margin-block-start: 0.2rem;
+  }
+
+  /* ---- partners ---- */
+  .section-partners {
+    padding-block: clamp(2rem, 1rem + 3vw, 3.5rem);
+  }
+
+  .partners {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+    margin: 0;
+  }
+
+  .partner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    color: var(--ink-muted);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .partner svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ---- cards ---- */
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(1.25rem, 1rem + 1vw, 2.25rem);
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card h3 {
+    margin-block-end: 0.5rem;
+  }
+
+  .card p {
+    color: var(--ink-muted);
+    font-size: var(--step--1);
+  }
+
+  .card .tag {
+    color: inherit;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    margin-block-start: auto;
+    padding-block-start: 0.5rem;
+    font-weight: 700;
+    font-size: var(--step--1);
+  }
+
+  .card-link::after {
+    content: " \2192";
+    margin-inline-start: 0.35rem;
+  }
+
+  .icon-badge {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-block-end: 1.25rem;
+    border-radius: 12px;
+    color: var(--badge-ink);
+  }
+
+  .icon-badge svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Icon grounds. Decorative gradients under a white glyph only — no
+     text is ever set on one. Both stops of each are tokens so the gate
+     can check the glyph against the lightest of them. */
+  .badge-blue {
+    background: linear-gradient(135deg, var(--badge-blue-from), var(--badge-blue-to));
+  }
+
+  .badge-clay {
+    background: linear-gradient(135deg, var(--badge-clay-from), var(--badge-clay-to));
+  }
+
+  .badge-green {
+    background: linear-gradient(135deg, var(--badge-green-from), var(--badge-green-to));
+  }
+
+  .badge-gold {
+    background: linear-gradient(135deg, var(--badge-gold-from), var(--badge-gold-to));
+  }
+
+  .badge-burgundy {
+    background: linear-gradient(135deg, var(--badge-burgundy-from), var(--badge-burgundy-to));
+  }
+
+  .badge-navy {
+    background: linear-gradient(135deg, var(--badge-navy-from), var(--badge-navy-to));
+  }
+
+  /* ---- developer panel ---- */
+  .section-dark {
+    background: var(--hero-bg);
+    color: var(--hero-ink-soft);
+    border-block: 1px solid var(--hero-line);
+  }
+
+  .section-dark h2 {
+    color: var(--hero-ink);
+  }
+
+  .dev-grid {
+    display: grid;
+    gap: clamp(2rem, 1rem + 4vw, 4.5rem);
+    align-items: center;
+  }
+
+  .dev-lead {
+    color: var(--hero-ink-soft);
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .pill {
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--hero-line);
+    background: var(--hero-surface);
+    color: var(--hero-ink);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  .code-window {
+    min-width: 0;
+    border-radius: 14px;
+    border: 1px solid var(--hero-line);
+    background: var(--code-bg);
+    color: var(--code-plain);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+
+  .code-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.1rem;
+    background: var(--code-bar);
+    border-block-end: 1px solid var(--hero-line);
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--code-comment);
+  }
+
+  .traffic {
+    display: inline-flex;
+    gap: 7px;
+  }
+
+  .traffic span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--hero-line);
+  }
+
+  .code-filename {
+    margin-inline: auto;
+  }
+
+  .code-body {
+    margin: 0;
+    padding: 1.25rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: var(--step--1);
+    line-height: 1.7;
+    color: var(--code-plain);
+  }
+
+  .syn-keyword {
+    color: var(--code-keyword);
+    font-weight: 600;
+  }
+
+  .syn-function {
+    color: var(--code-function);
+  }
+
+  .syn-string {
+    color: var(--code-string);
+  }
+
+  .syn-comment {
+    color: var(--code-comment);
+    font-style: italic;
+  }
+
+  .syn-variable {
+    color: var(--code-plain);
+  }
+
+  .syn-property {
+    color: var(--code-property);
+  }
+
+  .syn-number {
+    color: var(--code-number);
+  }
+
+  /* ---- governance card ---- */
+  .governance-card {
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    align-items: center;
+    padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  }
+
+  .governance-card p {
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+  }
+
+  .governance-card .lead {
+    font-size: var(--step-1);
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+    gap: var(--gap);
+  }
+
+  /* The label is read first and the figure second (dt, dd); the figure is
+     shown first. Order is visual only. */
+  .metric,
+  .stat {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.25rem;
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--radius);
+    background: var(--bg-soft);
+    border: 1px solid var(--line-soft);
+    border-inline-start: 3px solid var(--green);
+  }
+
+  .metric dd,
+  .stat dd {
+    font-size: var(--step-2);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--green-text);
+  }
+
+  .metric dt,
+  .stat dt {
+    color: var(--ink-muted);
+    font-size: var(--step--1);
+  }
+
+  .stat {
+    background: var(--surface);
+    border-inline-start-color: var(--accent);
+  }
+
+  .stat dd {
+    color: var(--ink);
+  }
+
+  /* ---- settlement stream ---- */
+  .stream {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .stream-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .status-dot {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  /* ---- footer ---- */
+  .site-footer {
+    padding-block: var(--section-y);
+    border-block-start: 1px solid var(--line-soft);
+    background: var(--bg-soft);
+  }
+
+  .footer-cols {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  }
+
+  .footer-cols h2 {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-block-end: 0.6rem;
+  }
+
+  .footer-cols a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .footer-cols a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    margin-block-start: var(--gap);
+    padding-block-start: var(--gap);
+    border-block-start: 1px solid var(--line-soft);
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .footer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: var(--step--1);
+    color: var(--green-text);
+  }
+
+  .footer-note {
+    color: var(--ink-muted);
+    font-size: var(--step--1);
+  }
+
+  /* ---- forms ---- */
+  .field {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .field label {
+    font-weight: 700;
+    font-size: var(--step--1);
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    min-height: 2.75rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--ink);
+  }
+
+  .field textarea {
+    min-height: 8rem;
+  }
+
+  .field .hint {
+    color: var(--ink-muted);
+    font-size: var(--step--1);
+  }
+
+  /* Without JavaScript the disclosure buttons cannot open anything: the
+     drawer is shown expanded and the chevrons withdrawn. The top-level
+     links still navigate, which is the whole menu without scripting. */
+  html.no-js .nav-disclosure {
+    display: none;
+  }
+
+  /* ---- wide layout: the full row ---- */
+  @media (min-width: 64rem) {
+    .hero-inner {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+
+    .dev-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    }
+
+    .governance-card {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    }
+  }
+
+  /* ---- narrow layout: the drawer ---- */
+  @media (max-width: 63.999rem) {
+    .nav-item {
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* The link shares its row with the disclosure instead of taking the
+       full width the topbar gives a drawer link. */
+    .has-panel > .topbar-link {
+      flex: 1 1 0;
+      inline-size: auto;
+    }
+
+    .nav-disclosure {
+      margin-inline-start: 0;
+    }
+
+    /* The panel becomes an accordion body: in flow, full width, and in
+       the band's own colours rather than a floating card. */
+    .nav-panel {
+      position: static;
+      width: 100%;
+      max-width: none;
+      margin-block: 0.25rem 0.5rem;
+      padding: 0.5rem;
+      background: var(--hero-surface);
+      color: var(--hero-ink);
+      border-color: var(--hero-line);
+      box-shadow: none;
+    }
+
+    .nav-panel::before {
+      display: none;
+    }
+
+    .panel-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .panel-item,
+    .panel-item:hover {
+      color: var(--hero-ink);
+      background: transparent;
+    }
+
+    .panel-desc {
+      color: var(--hero-ink-soft);
+    }
+  }
+}
+
+@layer utilities {
+  .narrow {
+    width: min(100% - 2rem, 46rem);
+    margin-inline: auto;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .mx-auto {
+    margin-inline: auto;
+  }
+
+  .muted {
+    color: var(--ink-muted);
+  }
+
+  .section-soft {
+    background: var(--bg-soft);
+  }
+
+  .cta-row-centred {
+    justify-content: center;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Fenced code blocks from Markdown.
+
+   The generator links its own `highlight.css`, which sets a grey ground
+   on `pre.highlight` and swaps it under `prefers-color-scheme` only —
+   ignoring the theme toggle. Two classes outrank it, so the block takes
+   the theme's surface in both schemes and follows the toggle.
+   --------------------------------------------------------------------- */
+.prose pre.highlight {
+  background: var(--surface-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-size: 0.92em;
+  line-height: 1.6;
+}
+
+.prose pre.highlight code {
+  color: inherit;
+  background: none;
+}
+
+/* ---------------------------------------------------------------------
+   Print.
+
+   A sticky header and a fixed search trigger repeat on every sheet, and
+   the dark surfaces are a full cartridge.
+   --------------------------------------------------------------------- */
+@media print {
+  #ssg-search-widget,
+  .skip-link,
+  .hero-stage,
+  .hero-glow,
+  .topbar {
+    display: none !important;
+  }
+
+  :root,
+  :root[data-theme="dark"] {
+    --bg: #ffffff;
+    --bg-soft: #ffffff;
+    --surface: #ffffff;
+    --surface-soft: #ffffff;
+    --ink: #000000;
+    --ink-soft: #1a1a1a;
+    --ink-muted: #333333;
+    --accent: #000000;
+    --line: #666666;
+    --line-soft: #999999;
+    --hero-bg: #ffffff;
+    --hero-surface: #ffffff;
+    --hero-ink: #000000;
+    --hero-ink-soft: #1a1a1a;
+    --hero-line: #999999;
+    --hero-accent: #000000;
+    --hero-clay: #000000;
+    --code-bg: #ffffff;
+    --code-bar: #ffffff;
+    --code-plain: #000000;
+    --code-keyword: #000000;
+    --code-function: #000000;
+    --code-string: #000000;
+    --code-comment: #333333;
+    --code-property: #000000;
+    --code-number: #000000;
+    --green-text: #000000;
+    --green: #333333;
+    color-scheme: light;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .hero-slope {
+    display: none;
+  }
+
+  /* A link reading "here" is useless once the href is gone. */
+  .prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  .card,
+  .stat,
+  .metric,
+  .code-window {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
+
+/* Attribution link. The colour is inherited from the footer so the pair is one
+   the contrast gate already verifies, rather than a new literal that nothing
+   checks. The 44px box meets the AAA target-size minimum. */
+.made-with-ssg {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------
+   Increase Contrast (macOS / iOS "Increase Contrast", and the same user
+   preference on other platforms).
+
+   Tokens only, so every rule that already consumes them follows. Muted
+   and soft inks collapse onto the full-strength ink, and the hairline
+   rules become the border colour, which is the part that disappears
+   first for anyone who asked for more contrast.
+   --------------------------------------------------------------------- */
+@media (prefers-contrast: more) {
+  :root,
+  :root[data-theme="light"],
+  :root[data-theme="dark"] {
+    --ink-soft: var(--ink);
+    --ink-muted: var(--ink);
+    --hero-ink-soft: var(--hero-ink);
+    --line-soft: var(--line);
+    --hero-line: var(--hero-ink-soft);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Forced colours (Invert Colors, Windows High Contrast, and similar).
+
+   The OS replaces the palette wholesale here, so the job is not to
+   restyle but to make sure nothing that was carried by colour alone
+   disappears with it. Focus rings and borders get explicit system
+   colours; links get LinkText so they stay identifiable as links.
+   --------------------------------------------------------------------- */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  a {
+    color: LinkText;
+  }
+
+  a:visited {
+    color: VisitedText;
+  }
+
+  /* A button distinguished only by its background becomes invisible
+     when the background is forced; give it an edge that is not. */
+  .btn,
+  .btn-primary,
+  .nav-disclosure {
+    border: 1px solid ButtonText;
+    forced-color-adjust: none;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+
+  .skip-link {
+    background: Canvas;
+    color: CanvasText;
+    border: 1px solid CanvasText;
+  }
+
+  .hero-glow {
+    display: none;
+  }
+}
+
+
+/* WCAG 2.5.5 Target Size (Enhanced, AAA) — 44x44 CSS px.
+ *
+ * Footer and navigation links are lists of controls, not running text, so
+ * 2.5.5's "inline" exception does not cover them. */
+footer a,
+.made-with-ssg {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  min-width: 44px;
+}
+
+.skip-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  min-width: 44px;
+}
+
+/* A link that is the entire content of its paragraph is a control, not a
+   phrase inside a sentence, so 2.5.5's inline exception does not apply. */
+.container > p > a:only-child {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+/* WCAG 2.4.11/2.4.12 Focus Not Obscured. The header is sticky, so scrolling
+   to a focused control - or to a fragment - can park it underneath. 6rem
+   clears this header at its tallest single row (68px) with room to spare. */
+html {
+  scroll-padding-top: 6rem;
+}
+
+/* Art-directed mobile hero.
+   The desktop file is a tall portrait; on a phone it would run to roughly
+   three screens of height and cost three times the bytes. A 3:2 crop is
+   served below 64rem, and the reserved box has to match it or the swap
+   shows up as layout shift. */
+@media (max-width: 64rem) {
+  .art-mobile-crop { aspect-ratio: 3 / 2; object-fit: cover; height: auto; }
+}
+
+/* Bilingual safety net.
+   A heading that cannot break pushes its grid past the viewport as soon as
+   the translation is longer than the English — which is how Kairo and
+   Steward failed 1.4.4 and 1.4.10 once French pages existed. `break-word`
+   only acts when a word genuinely does not fit, so it changes nothing for
+   copy that already fits. */
+h1, h2, h3, h4, p, li, dd, dt, figcaption { overflow-wrap: break-word; }
+
+/* A grid or flex item's automatic minimum size is its min-content width, so
+   one long word can push its track wider than the viewport however narrow
+   the column is meant to be. Prism's French home page overflowed by three
+   pixels at 320px on CI and not at all locally: the same markup, different
+   font metrics, a min-content floor that landed either side of the track on
+   each platform. `min-width: 0` removes the floor so the track honours the
+   column instead of the longest word. */
+.hero-copy, .hero-stage, .eyebrow-hero, .hero-lead, .cta-row { min-width: 0; }
+
+/* `overflow-wrap: break-word` stops a long word painting outside its box but
+   deliberately does not change the element's min-content size, so a grid
+   track sized from that content is still as wide as the longest word —
+   which is why `min-width: 0` above was not enough on its own. `anywhere`
+   is the one that reduces min-content, and it still only breaks a word that
+   cannot otherwise fit. French "L'infrastructure" at hero size measures
+   254px against a 288px column here, and wider on CI's font metrics. */
+.hero-copy :is(h1, h2, p) { overflow-wrap: anywhere; }
+
+/* A sticky masthead can cover whatever the keyboard scrolls to, which is
+   what WCAG 2.4.11 and 2.4.12 forbid. Reserving its height as scroll
+   padding means a focused element always comes to rest below it. */
+html { scroll-padding-block-start: 5.5rem; }
+
+@media (max-width: 48rem) {
+  html { scroll-padding-block-start: 4.5rem; }
+}
+
+/* A consistent proportional rhythm below every heading level. */
+:where(h1, h2, h3, h4, h5, h6) { padding-block-end: 0.35em; }
+.site-footer .footer-credit a { display: inline; min-width: 0; min-height: 0; padding: 0; margin: 0; white-space: nowrap; }
+#mode-toggle .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+#mode-toggle .theme-icon { line-height: 1; }
+#mode-toggle .theme-icon::before { content: "🖥️"; font-size: 1.2rem; }
+:root[data-theme="light"] #mode-toggle .theme-icon::before { content: "☀️"; }
+:root[data-theme="dark"] #mode-toggle .theme-icon::before { content: "🌙"; }

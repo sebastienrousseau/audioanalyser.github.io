@@ -1,0 +1,129 @@
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="{{site_path}}" rel="home">
+      <img class="brand-logo" src="{{site_path}}logo.svg" alt="Audio Analyser home" width="32" height="32" />
+      <span class="brand-word" aria-hidden="true">audioanalyser<span class="brand-dot">.</span></span>
+    </a>
+
+    <!-- Always present; skeletonic hides it from 64em up. -->
+    <button
+      class="topbar-toggle"
+      id="navToggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="navMenu"
+    >
+      <span class="visually-hidden">Menu</span>
+      <span class="topbar-toggle-icon" aria-hidden="true"></span>
+    </button>
+
+    <div class="topbar-panel" id="navMenu">
+      <nav class="topbar-nav" aria-label="Primary">
+        <!--
+          Each item with a panel is two controls: the link navigates to the
+          page and works without JavaScript; the button beside it discloses
+          the panel and carries the expanded state.
+        -->
+        <ul class="topbar-links">
+          <li class="nav-item has-panel">
+            <a class="topbar-link" href="{{site_path}}features/" {{#if nav_features}}aria-current="page"{{/if}}>Features</a>
+            <button class="nav-disclosure" type="button" aria-expanded="false" aria-controls="panel-features">
+              <span class="visually-hidden">Features menu</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="nav-panel" id="panel-features" hidden>
+              <ul class="panel-grid">
+                <li>
+                  <a class="panel-item" href="{{site_path}}features/#speech-to-text">
+                    <span class="panel-icon badge-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3" /><path d="M5 10v1a7 7 0 0 0 14 0v-1" /><line x1="12" y1="18" x2="12" y2="22" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Speech to text</span><span class="panel-desc">Transcripts from Azure AI Speech.</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="panel-item" href="{{site_path}}features/#text-analysis">
+                    <span class="panel-icon badge-green" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Text analysis</span><span class="panel-desc">Sentiment, entities, key phrases, language.</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="panel-item" href="{{site_path}}features/#recommendations">
+                    <span class="panel-icon badge-clay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Recommendations</span><span class="panel-desc">Six language-model providers to choose from.</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="panel-item" href="{{site_path}}features/#the-dashboard">
+                    <span class="panel-icon badge-burgundy" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Dashboard</span><span class="panel-desc">A local web UI and REST API.</span></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item has-panel">
+            <a class="topbar-link" href="{{site_path}}getting-started/" {{#if nav_docs}}aria-current="page"{{/if}}>Docs</a>
+            <button class="nav-disclosure" type="button" aria-expanded="false" aria-controls="panel-docs">
+              <span class="visually-hidden">Docs menu</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="nav-panel" id="panel-docs" hidden>
+              <ul class="panel-grid">
+                <li>
+                  <a class="panel-item" href="{{site_path}}getting-started/">
+                    <span class="panel-icon badge-green" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Getting started</span><span class="panel-desc">Install from source and run a first transcript.</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="panel-item" href="{{site_path}}documentation/">
+                    <span class="panel-icon badge-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Reference</span><span class="panel-desc">Commands and configuration.</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="panel-item" href="{{site_path}}providers/">
+                    <span class="panel-icon badge-clay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Providers</span><span class="panel-desc">OpenAI, Anthropic, Gemini, Ollama and CLIs.</span></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="panel-item" href="{{site_path}}changelog/">
+                    <span class="panel-icon badge-burgundy" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg></span>
+                    <span class="panel-text"><span class="panel-title">Changelog</span><span class="panel-desc">What changed recently.</span></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="topbar-link" href="{{site_path}}providers/" {{#if nav_providers}}aria-current="page"{{/if}}>Providers</a>
+          </li>
+          <li>
+            <a class="topbar-link" href="{{site_path}}security/" {{#if nav_security}}aria-current="page"{{/if}}>Security</a>
+          </li>
+          <li>
+            <a class="topbar-link" href="{{site_path}}faqs/" {{#if nav_faqs}}aria-current="page"{{/if}}>FAQ</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="topbar-actions">
+        <!-- Search trigger slot: the generator puts its search button here. -->
+        <span data-ssg-search></span>
+
+        <!-- Icon swapped by CSS on [data-theme]; no scripted relabelling. -->
+        <button
+          class="theme-toggle"
+          id="mode-toggle"
+          type="button"
+          data-label-light="Light"
+          data-label-dark="Dark"
+        >
+          <span class="visually-hidden">Theme</span>
+          <span class="visually-hidden" id="mode-state" data-label-system="System">System</span>
+          <span class="theme-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
