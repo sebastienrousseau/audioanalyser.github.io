@@ -1,51 +1,42 @@
 ---
-name: "Audio Analyser"
-short_name: "AA"
-title: "Architecture & Ecosystem | Audio Analyser Pipeline"
-description: "Technical architecture, signal processing pipeline, Rust DSP engine, Python AI integrations, and WebAudio components powering Audio Analyser."
-keywords: "Audio Analyser Architecture, Rust DSP, Python Audio Processing, WebAudio Engine, WASM Signal Processing, Audio Pipeline, Spectrogram Pipeline"
-author: "Sébastien Rousseau"
-date: "2026-08-31"
+name: "audioanalyser"
+short_name: "audioanalyser"
+title: "About Audio Analyser and its author, Sebastien Rousseau | Audio Analyser"
+description: "Who builds Audio Analyser, and the facts about the project: its language, licence, Python requirement, releases and where its source and security policy live."
+keywords: "audio analyser author, sebastien rousseau, audioanalyser licence, audioanalyser versions"
+author: "Sebastien Rousseau"
+date: "2026-10-26"
+news_publication_date: "2026-10-26"
+layout: "page"
 language: "en-GB"
-layout: "about"
-permalink: "https://audioanalyser.github.io/about/index.html"
+schema: "page"
+changefreq: "monthly"
+eyebrow: "About"
+headline: "About Audio Analyser"
+lead: "Audio Analyser is an open-source project by Sebastien Rousseau."
 ---
+## Who builds Audio Analyser?
 
-<section class="section">
-  <div class="container stack">
-    <div class="stack text-center">
-      <p class="eyebrow">SYSTEM ARCHITECTURE</p>
-      <h1>Engineered for Zero-Latency Signal Processing</h1>
-      <p class="lead mx-auto" style="max-width:48rem;">A modular dual-engine architecture combining Rust performance primitives with Python data science ecosystems.</p>
-    </div>
+Audio Analyser is written by
+[Sebastien Rousseau](https://sebastienrousseau.com/), who is on
+[GitHub](https://github.com/sebastienrousseau) as sebastienrousseau. The
+first commit was made in December 2023.
 
-    <!-- Architecture Diagram Embed -->
-    <div class="card stack" style="margin-top:var(--gap); padding:var(--gap);">
-      <h2>The Audio Analyser Architecture</h2>
-      <p>The system is organized into a modular pipeline spanning ingestion, feature extraction, AI inference, and presentation:</p>
+## Project facts
 
-      <div style="text-align:center; margin:1.5rem 0;">
-        <img src="/assets/images/audio-analyser-architecture.png" alt="Audio Analyser System Architecture Diagram showing Ingestion, DSP, and AI Inference stages" class="img-frame" width="840" style="max-width:100%; border-radius:12px;" />
-        <p style="font-size:0.88rem; color:var(--ink-muted); margin-top:0.5rem;">Figure 1: Audio Analyser multi-stage signal processing and AI inference pipeline architecture.</p>
-      </div>
+| | |
+| :--- | :--- |
+| **Package** | `audioanalyser` (Python) |
+| **Language** | Python |
+| **Runtime** | Python 3.10 or newer |
+| **Services** | Azure AI Speech, Language and Translator; a language-model provider |
+| **Licence files** | Apache-2.0 and MIT |
+| **Latest GitHub release** | [v0.0.7](https://github.com/sebastienrousseau/audioanalyser.github.io/releases/tag/v0.0.7), 10 October 2026 |
+| **On PyPI** | [0.0.6](https://pypi.org/project/audioanalyser/0.0.6/), February 2024 |
+| **Source** | [github.com/sebastienrousseau/audioanalyser.github.io](https://github.com/sebastienrousseau/audioanalyser.github.io) |
+| **Security policy** | [SECURITY.md](https://github.com/sebastienrousseau/audioanalyser.github.io/security/policy) |
 
-      <div class="grid grid-3" style="margin:1rem 0;">
-        <div class="card" style="background:var(--surface-soft); padding:1.25rem;">
-          <img src="/icons/microphone.png" alt="" aria-hidden="true" width="36" height="36" style="margin-bottom:0.5rem;" />
-          <h3 style="margin-top:0;">1. Ingestion &amp; Resampling</h3>
-          <p style="font-size:0.92rem; margin-bottom:0;">Decodes MP3, WAV, FLAC, and OGG streams into standardized 16kHz/48kHz 32-bit floating point PCM audio buffers.</p>
-        </div>
-        <div class="card" style="background:var(--surface-soft); padding:1.25rem;">
-          <img src="/icons/analyze.png" alt="" aria-hidden="true" width="36" height="36" style="margin-bottom:0.5rem;" />
-          <h3 style="margin-top:0;">2. DSP Transformation</h3>
-          <p style="font-size:0.92rem; margin-bottom:0;">Applies Hanning windowing, vectorized Fast Fourier Transform (FFT), Mel filterbanks, and cepstral transformations in Rust with zero memory copy.</p>
-        </div>
-        <div class="card" style="background:var(--surface-soft); padding:1.25rem;">
-          <img src="/icons/recommend.png" alt="" aria-hidden="true" width="36" height="36" style="margin-bottom:0.5rem;" />
-          <h3 style="margin-top:0;">3. AI Inference &amp; Reports</h3>
-          <p style="font-size:0.92rem; margin-bottom:0;">Performs acoustic speech recognition, sentiment classification, and outputs structured JSON and visual HTML insight dashboards.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+## How is it versioned?
+
+Releases are tagged `v0.0.x` and step by 0.0.1. The main branch is ahead of
+the PyPI package; read the [changelog](/audioanalyser.github.io/changelog/) before upgrading.
