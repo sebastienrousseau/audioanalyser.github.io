@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- `no-js` is removed by theme-init.js. Until then, and forever if
+     scripting is unavailable, the stylesheet uses it to keep every
+     JavaScript-dependent affordance in a usable state. -->
+<html lang="{{language}}" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <title>{{title}}</title>
+
+    <!-- Strict same-origin policy. form-action also allows Formspree,
+         where the contact form posts. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               base-uri 'none';
+               object-src 'none';
+               script-src 'self';
+               style-src 'self';
+               img-src 'self' data:;
+               font-src 'self';
+               connect-src 'self';
+               manifest-src 'self';
+               form-action 'self' https://formspree.io"
+    />
+
+    {{!primary}}
+    {{!opengraph}}
+    {{!twitter}}
+    {{!apple}}
+    {{!microsoft}}
+
+    <!-- Absolute URLs: Open Graph consumers do not resolve relative paths. -->
+    <meta property="og:image" content="{{site_url}}images/screenshot.png" />
+    <meta property="og:image:width" content="1500" />
+    <meta property="og:image:height" content="1000" />
+    <meta property="og:image:alt" content="{{title}}" />
+    <meta name="twitter:image" content="{{site_url}}images/screenshot.png" />
+
+    <link rel="canonical" href="{{permalink}}" />
+
+    <link rel="alternate" type="application/rss+xml" title="Audio Analyser - RSS" href="{{site_path}}rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Audio Analyser - Atom" href="{{site_path}}atom.xml" />
+    <link rel="alternate" type="application/feed+json" title="Audio Analyser - JSON Feed" href="{{site_path}}feed.json" />
+    <link rel="manifest" href="{{site_path}}manifest.json" />
+    <link rel="icon" href="{{site_path}}logo.svg" type="image/svg+xml" />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#111111" />
+
+    <!-- Native cross-document View Transitions. Browsers without support
+         ignore the hint and perform an ordinary navigation. -->
+    <meta name="view-transition" content="same-origin" />
+
+    <!-- Authored structured data; see README. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "{{site_url}}#website",
+            "url": "{{site_url}}",
+            "name": "Audio Analyser",
+            "description": "{{description}}",
+            "inLanguage": "{{language}}",
+            "publisher": { "@id": "{{site_url}}#author" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "{{site_url}}#audioanalyser",
+            "name": "Audio Analyser",
+            "description": "Python command-line tool and local web dashboard that records audio, transcribes it with Azure AI Speech, analyses the text with Azure AI Language, translates it and writes recommendations with a choice of language model.",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Python 3.10 or newer",
+            "programmingLanguage": "Python",
+            "license": ["https://www.apache.org/licenses/LICENSE-2.0", "https://opensource.org/licenses/MIT"],
+            "codeRepository": "https://github.com/sebastienrousseau/audioanalyser.github.io",
+            "downloadUrl": "https://github.com/sebastienrousseau/audioanalyser.github.io",
+            "softwareHelp": "{{site_url}}getting-started/",
+            "isAccessibleForFree": true,
+            "author": { "@id": "{{site_url}}#author" },
+            "url": "{{site_url}}"
+          },
+          {
+            "@type": "Person",
+            "@id": "{{site_url}}#author",
+            "name": "Sebastien Rousseau",
+            "url": "https://sebastienrousseau.com/",
+            "sameAs": ["https://github.com/sebastienrousseau"]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "{{permalink}}#webpage",
+            "url": "{{permalink}}",
+            "name": "{{title}}",
+            "description": "{{description}}",
+            "inLanguage": "{{language}}",
+            "isPartOf": { "@id": "{{site_url}}#website" },
+            "about": { "@id": "{{site_url}}#audioanalyser" },
+            "author": { "@id": "{{site_url}}#author" },
+            "datePublished": "{{date}}"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Skeletonic Stylus core, loaded before the theme stylesheet
+         so its @layer skeletonic.* blocks are declared first and the
+         theme wins every overlap. No apostrophes in head comments:
+         the ssg 0.0.69 quality gate reads one as an opening quote and
+         then pairs the wrong integrity value with theme-init.js. -->
+    <link rel="stylesheet" href="{{site_path}}skeletonic.min.css" />
+    <link rel="stylesheet" href="{{site_path}}styles.css" />
+    <script src="{{site_path}}theme-init.js"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    {{> header}}
+
+    <main id="main">
+      {{#block "main"}}{{/block}}
+    </main>
+
+    {{> footer}}
+
+    <script src="{{site_path}}main.js" defer></script>
+  </body>
+</html>

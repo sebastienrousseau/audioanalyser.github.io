@@ -1,0 +1,53 @@
+# Typed front-matter contract for the Audio Analyser website.
+#
+# ssg validates every page carrying `schema = "page"` against this at
+# compile time, so a page missing one of the fields its layout prints fails
+# the build with a named error instead of rendering a blank.
+
+[[schemas]]
+name = "page"
+
+[[schemas.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[schemas.fields]]
+name = "description"
+type = "string"
+required = true
+
+[[schemas.fields]]
+name = "layout"
+type = "string"
+required = true
+
+[[schemas.fields]]
+name = "date"
+type = "date"
+required = true
+
+[[schemas.fields]]
+name = "author"
+type = "string"
+required = true
+
+[[schemas.fields]]
+name = "language"
+type = "string"
+required = true
+
+[[schemas.fields]]
+name = "eyebrow"
+type = "string"
+required = true
+
+[[schemas.fields]]
+name = "headline"
+type = "string"
+required = true
+
+[[schemas.fields]]
+name = "lead"
+type = "string"
+required = true

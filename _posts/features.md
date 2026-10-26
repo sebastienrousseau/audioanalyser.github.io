@@ -1,87 +1,81 @@
 ---
-name: "Audio Analyser"
-short_name: "AA"
-title: "Features | Fast Fourier Transform, Speech-to-Text & DSP"
-description: "Discover Audio Analyser core features: sub-5ms Fast Fourier Transform (FFT), Mel spectrograms, automated speech recognition, and tone detection."
-keywords: "Fast Fourier Transform, FFT Analysis, Spectral Analysis, Audio Feature Extraction, Mel Spectrogram, MFCC, Speech to Text, Speaker Diarization, Acoustic AI, Prosody Analysis"
-author: "Sébastien Rousseau"
-date: "2026-08-31"
+name: "audioanalyser"
+short_name: "audioanalyser"
+title: "Features: recording, transcription, analysis and recommendations | Audio Analyser"
+description: "What Audio Analyser does: microphone recording, Azure AI Speech transcription, Azure AI Language text analysis, recommendations from six language-model providers, translation, text to speech and a local dashboard."
+keywords: "audio analyser features, azure speech to text, azure text analytics, sentiment analysis, llm recommendations, text to speech, translation"
+author: "Sebastien Rousseau"
+date: "2026-10-26"
+news_publication_date: "2026-10-26"
+layout: "page"
 language: "en-GB"
-layout: "features"
-permalink: "https://audioanalyser.github.io/features/index.html"
+schema: "page"
+changefreq: "monthly"
+eyebrow: "Features"
+headline: "What Audio Analyser does, and where it stops"
+lead: "Each section says what the command does, which service it uses and where it writes its results."
+nav_features: "true"
 ---
+## Recording
 
-<section class="section">
-  <div class="container stack">
-    <div class="stack text-center">
-      <p class="eyebrow">FEATURE BREAKDOWN</p>
-      <h1>Acoustic DSP &amp; Intelligence Capabilities</h1>
-      <p class="lead mx-auto" style="max-width:48rem;">A complete suite of signal processing algorithms and AI speech models engineered for production workflows.</p>
-    </div>
+**`-rec` records from the default microphone** into `INPUT_FOLDER`. By
+default it records ten seconds of mono, 16-bit audio at 44.1 kHz. Pass a
+JSON file to change the channels (one or two), the sample rate (8,000 to
+48,000 Hz), the sample format and the duration:
 
-    <div class="stack" style="gap:var(--gap); margin-top:var(--gap);">
-      <!-- Feature 1: Fast Fourier Transform & Spectral Analysis -->
-      <article class="card stack" id="spectral-fft" style="padding:var(--gap);">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <img src="/icons/analyze.png" alt="" aria-hidden="true" width="40" height="40" />
-            <span class="badge">Digital Signal Processing</span>
-          </div>
-          <span style="color:var(--ink-muted); font-size:0.9rem; font-weight:600;">Feature 01</span>
-        </div>
-        <h2 style="margin-top:0.5rem;">1. Fast Fourier Transform (FFT) &amp; Spectral Analysis</h2>
-        <p class="lead">Sub-5ms frequency domain transformation with interactive spectrogram and filterbank rendering.</p>
-        <div class="prose">
-          <p>Extract mathematical acoustic features directly from audio buffers using vectorized Fast Fourier Transforms (FFT) and zero-allocation memory pipelines.</p>
-          <ul>
-            <li><strong>Mel-Frequency Cepstral Coefficients (MFCCs):</strong> Computes 13–40 cepstral coefficients for accurate voice classification and acoustic timbre identification.</li>
-            <li><strong>Spectral Descriptors:</strong> Computes Spectral Centroid, Spectral Rolloff, Flux, and Flatness in real time.</li>
-            <li><strong>Zero-Crossing Rate (ZCR):</strong> Detects unvoiced phonetic segments, percussion transients, and background noise thresholds.</li>
-          </ul>
-        </div>
-      </article>
+```bash
+python -m audioanalyser -rec settings.json
+```
 
-      <!-- Feature 2: Speech-to-Text -->
-      <article class="card stack" id="speech-to-text" style="padding:var(--gap);">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <img src="/icons/transcribe.png" alt="" aria-hidden="true" width="40" height="40" />
-            <span class="badge">Speech AI Engine</span>
-          </div>
-          <span style="color:var(--ink-muted); font-size:0.9rem; font-weight:600;">Feature 02</span>
-        </div>
-        <h2 style="margin-top:0.5rem;">2. Automated Speech-to-Text &amp; Diarization</h2>
-        <p class="lead">Converting complex multi-channel audio recordings into structured, searchable text data with sub-second turnaround.</p>
-        <div class="prose">
-          <p>Audio Analyser integrates state-of-the-art acoustic models to transcribe conversations with high fidelity across 60+ languages. Automatic speaker diarization isolates and timestamps distinct participant dialogue tracks.</p>
-          <ul>
-            <li><strong>High-Fidelity Transcription:</strong> Resilient to background noise, room reverberation, and overlapping speech.</li>
-            <li><strong>Speaker Separation:</strong> Tracks multi-speaker conversations and generates speaker-attributed transcripts.</li>
-            <li><strong>Punctuation &amp; Normalization:</strong> Formats currency, dates, numbers, and grammar automatically.</li>
-          </ul>
-        </div>
-      </article>
+Recording uses PyAudio, which needs the PortAudio library on the machine.
 
-      <!-- Feature 3: Semantic Intelligence -->
-      <article class="card stack" id="sentiment-tone" style="padding:var(--gap);">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <img src="/icons/recommend.png" alt="" aria-hidden="true" width="40" height="40" />
-            <span class="badge">Semantic Intelligence</span>
-          </div>
-          <span style="color:var(--ink-muted); font-size:0.9rem; font-weight:600;">Feature 03</span>
-        </div>
-        <h2 style="margin-top:0.5rem;">3. Conversational Sentiment &amp; Tone Detection</h2>
-        <p class="lead">Surface customer sentiment trends, key intent drivers, and operational risk indicators.</p>
-        <div class="prose">
-          <p>Combines linguistic analysis with acoustic prosody metrics (pitch variation, speaking rate, energy) to evaluate conversational sentiment accurately.</p>
-          <ul>
-            <li><strong>Multi-Dimensional Sentiment:</strong> Evaluates positive, neutral, and negative sentiment distribution per conversation turn.</li>
-            <li><strong>Entity &amp; Key Phrase Extraction:</strong> Automatically tags domain keywords, product references, and action items.</li>
-            <li><strong>Automated Summary Reports:</strong> Produces executive insight briefs summarizing call outcomes in seconds.</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+## Speech to text
+
+**`-stt` transcribes an audio file with Azure AI Speech.** It handles long
+recordings through continuous recognition, and saves each transcript as
+text and JSON in `TRANSCRIPTS_FOLDER`, with a row in a SQLite database.
+
+```bash
+python -m audioanalyser -stt meeting.wav
+```
+
+## Text analysis
+
+**`-ta` analyses every `.txt` transcript in `TRANSCRIPTS_FOLDER`** with Azure
+AI Language: sentiment, named entities, key phrases and the language of the
+text. Results go to `REPORTS_FOLDER` as text and JSON, with a summary in
+SQLite.
+
+## Recommendations
+
+**`-sum` sends each transcript to a language model** and writes a summary
+with recommendations to `RECOMMENDATIONS_FOLDER`. The provider is chosen
+with `LLM_PROVIDER`: `openai` (the default), `anthropic`, `gemini`,
+`ollama`, `claude-cli` or `agy-cli`. The
+[providers page](/audioanalyser.github.io/providers/) covers each one.
+
+## Translation and text to speech
+
+**`-t` translates transcripts with Azure AI Translator** into the languages
+you list, for example `-t fr de`, writing them to `TRANSLATIONS_FOLDER`.
+**`-tts` reads text aloud with Azure AI Speech** and saves the audio file:
+
+```bash
+python -m audioanalyser -tts "hello" greeting
+```
+
+## The dashboard
+
+**`-s` starts a local web server on port 8080** with a dashboard for
+recording, transcribing, analysing, generating recommendations and reading
+the results, and the same actions as HTTP endpoints. It serves the
+`dashboard/` folder of the repository, so run it from a clone.
+
+## Where it stops
+
+- It needs Azure: transcription, analysis, translation and text to speech
+  have no offline alternative in the code.
+- The command line handles one task per run; there is no single command
+  for the whole pipeline.
+- Folders and keys come from environment variables, usually a `.env` file;
+  there is no configuration file of its own.

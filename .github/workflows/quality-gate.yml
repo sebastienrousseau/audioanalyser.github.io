@@ -1,10 +1,8 @@
-name: Quality Gate & WCAG AAA Compliance
+name: Quality gate
 
 on:
-  push:
-    branches: [main, master, "feat/**"]
   pull_request:
-    branches: [main, master, "feat/**"]
+    branches: [main]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,32 +11,30 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  SSG_VERSION: "0.0.69"
+  # SHA-256 of ssg-v0.0.69-x86_64-unknown-linux-musl.tar.gz, as published
+  # with the release; the job stops if the download differs.
+  SSG_SHA256: "a8b1bd72bc607a58ddb57299fac0107da6cc5b08ed4723b79b8f337f0248ba46"
+
 jobs:
-  quality-gate:
-    name: WCAG 2.2 AAA & Lighthouse Quality Gate
+  build:
+    name: Build and audit the site
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Install Audit Tooling
+      - name: Install ssg
         run: |
-          npm install -g pa11y-ci @lhci/cli
+          archive="ssg-v${SSG_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+          curl -fsSLo "$archive" "https://github.com/sebastienrousseau/static-site-generator/releases/download/v${SSG_VERSION}/${archive}"
+          echo "${SSG_SHA256}  ${archive}" | sha256sum -c -
+          mkdir -p "$HOME/.local/bin" && tar -xzf "$archive" -C "$HOME/.local/bin" ssg
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
-      - name: Verify SSG Manifest Conformance
-        run: |
-          if [ -f config/ssg.json ]; then
-            node -e "JSON.parse(require('fs').readFileSync('config/ssg.json', 'utf8')); console.log('config/ssg.json is valid JSON');"
-          fi
-
-      - name: Run Deterministic Branch Hygiene Check
-        run: |
-          if [ -f scripts/prune-branches.sh ]; then
-            chmod +x scripts/prune-branches.sh
-            DRY_RUN=true bash scripts/prune-branches.sh origin
-          fi
+      # Fails on: ssg's quality gate, a dangling #fragment, an SRI hash
+      # that does not match its file, or any `ssg audit` gate (WCAG,
+      # JSON-LD, CSP/SRI, links, metadata, feeds, images...).
+      - name: Build and audit
+        run: make build

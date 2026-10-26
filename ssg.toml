@@ -1,14 +1,20 @@
-# Generated site-level configuration for audioanalyser.github.io
+# Site configuration for the Audio Analyser website, built with `make build`.
+# The paths are relative to the repository root. The site is a GitHub
+# Pages project site, served under /audioanalyser.github.io/ on the
+# owner's domain, so base_url carries that path.
+
 site_name = "Audio Analyser"
-site_title = "Audio Analyser | High-Performance Audio Processing CLI"
-site_description = "Fast, high-fidelity command-line audio analysis and frequency extraction tool built in Rust."
-base_url = "https://audioanalyser.com"
+site_title = "Audio Analyser: speech-to-text and text analysis with Azure AI"
+site_description = "Audio Analyser is an open-source Python command-line tool that records audio, transcribes it with Azure AI Speech, analyses the text with Azure AI Language and writes recommendations with a choice of language model."
+base_url = "https://sebastienrousseau.com/audioanalyser.github.io"
 language = "en-GB"
 
 content_dir = "_posts"
 template_dir = "_layouts"
 output_dir = "docs"
 
+# Agentic discovery: /agents.txt, /.well-known/ai-plugin.json and
+# /.well-known/mcp.json. Permissive, because the site exists to be read.
 [agents]
 agents_txt = true
 ai_plugin = true
@@ -16,5 +22,7 @@ ai_plugin = true
 [agents.mcp]
 enabled = true
 
+# Security headers for hosts that read `_headers`. GitHub Pages ignores the
+# file; it is kept so the same build deploys elsewhere with the headers.
 [edge_headers]
-targets = ["netlify", "cloudflare", "vercel"]
+targets = ["netlify", "cloudflare"]

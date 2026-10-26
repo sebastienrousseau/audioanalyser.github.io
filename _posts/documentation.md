@@ -1,62 +1,73 @@
 ---
-name: "Audio Analyser"
-short_name: "AA"
-title: "Documentation & Quick Start | Python SDK & CLI"
-description: "Complete developer guide for Audio Analyser: PyPI package installation, Python SDK examples, CLI commands, and Docker microservice deployment."
-keywords: "Audio Analyser Documentation, Python Audio SDK, PyPI Audio Analyser, CLI Audio Processing, Fast Fourier Transform Code, Docker Audio Microservice"
-author: "Sébastien Rousseau"
-date: "2026-08-31"
+name: "audioanalyser"
+short_name: "audioanalyser"
+title: "Command and configuration reference | Audio Analyser"
+description: "Reference for Audio Analyser: every command-line flag, the environment variables each module reads, and the folders it writes to."
+keywords: "audioanalyser commands, audio analyser cli, audioanalyser environment variables"
+author: "Sebastien Rousseau"
+date: "2026-10-26"
+news_publication_date: "2026-10-26"
+layout: "page"
 language: "en-GB"
-layout: "documentation"
-permalink: "https://audioanalyser.github.io/documentation/index.html"
+schema: "page"
+changefreq: "monthly"
+eyebrow: "Reference"
+headline: "Commands and configuration"
+lead: "Checked against audioanalyser/__main__.py and the modules on the main branch."
+nav_docs: "true"
 ---
+## Commands
 
-<section class="section">
-  <div class="container stack">
-    <div class="stack text-center">
-      <p class="eyebrow">DEVELOPER DOCUMENTATION</p>
-      <h1>Getting Started with Audio Analyser</h1>
-      <p class="lead mx-auto" style="max-width:48rem;">Install the CLI tool, integrate the Python library, or deploy the containerized microservice in minutes.</p>
-    </div>
+Run each as `python -m audioanalyser <flag>`; one task per run.
 
-    <div class="card stack" style="margin-top:var(--gap); padding:var(--gap);">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <img src="/icons/store.png" alt="" aria-hidden="true" width="36" height="36" />
-        <h2>1. Installation via PyPI</h2>
-      </div>
-      <p>Install the official package using standard Python package managers:</p>
-      <div style="background:var(--surface-soft); padding:1rem 1.25rem; border-radius:12px; border:1px solid var(--line-soft); font-family:monospace; font-size:0.95rem;">
-        pip install audioanalyser
-      </div>
+| Flag | What it does | Example |
+| :--- | :--- | :--- |
+| `-rec [settings.json]` | Record from the microphone | `-rec` |
+| `-stt <file>` | Transcribe an audio file with Azure AI Speech | `-stt meeting.wav` |
+| `-ta` | Analyse every transcript in `TRANSCRIPTS_FOLDER` | `-ta` |
+| `-sum` | Summarise transcripts and write recommendations | `-sum` |
+| `-t <codes...>` | Translate transcripts into these languages | `-t fr de` |
+| `-tts <text> <name>` | Speak the text and save it as `<name>` | `-tts "hello" greeting` |
+| `-s` | Start the dashboard on port 8080 | `-s` |
+| `-h` | Print the usage | `-h` |
 
-      <div style="display:flex; align-items:center; gap:12px; margin-top:var(--gap);">
-        <img src="/icons/analyze.png" alt="" aria-hidden="true" width="36" height="36" />
-        <h2>2. Python SDK Usage Example</h2>
-      </div>
-      <p>Analyze an audio file, compute Fast Fourier Transforms, extract speech transcripts, and evaluate conversation sentiment:</p>
-      <pre style="background:var(--surface-soft); padding:1rem 1.25rem; border-radius:12px; border:1px solid var(--line-soft); font-family:monospace; font-size:0.92rem; overflow-x:auto;">
-<code>from audioanalyser import AudioAnalyser
+## Configuration
 
-# Initialize the analyser with language configuration
-analyser = AudioAnalyser(language="en-US")
+Settings are environment variables, read from a `.env` file in the working
+directory. `env.example` documents most of them.
 
-# Process audio file and extract acoustic telemetry
-result = analyser.process("sample_call.wav")
+### Folders
 
-# Output insights
-print(f"Transcript: {result.transcript}")
-print(f"Sentiment Score: {result.sentiment_score}")
-print(f"Spectral Centroid (Hz): {result.spectral_centroid}")
-print(f"Key Phrases: {result.key_phrases}")</code></pre>
+| Variable | Used by |
+| :--- | :--- |
+| `INPUT_FOLDER` | Recording (output), transcription (input) |
+| `TRANSCRIPTS_FOLDER` | Transcription (output), analysis, recommendations, translation (input) |
+| `REPORTS_FOLDER` | Analysis (output) |
+| `RECOMMENDATIONS_FOLDER` | Recommendations (output) |
+| `TRANSLATIONS_FOLDER` | Translation (output) |
+| `RECORDS_FOLDER` | Text to speech (output) |
 
-      <div style="display:flex; align-items:center; gap:12px; margin-top:var(--gap);">
-        <img src="/icons/server.png" alt="" aria-hidden="true" width="36" height="36" />
-        <h2>3. CLI Command Line Interface</h2>
-      </div>
-      <p>Run instant audio analysis and generate structured JSON reports directly from your terminal:</p>
-      <div style="background:var(--surface-soft); padding:1rem 1.25rem; border-radius:12px; border:1px solid var(--line-soft); font-family:monospace; font-size:0.95rem;">
-        audioanalyser process --input recordings/call-01.wav --output report.json
-      </div>
-    </div>
-  </div>
-</section>
+### Azure
+
+| Variable | Service |
+| :--- | :--- |
+| `AZURE_AUDIO_TEXT_KEY`, `REGION`, `AUDIO_EXTENSION` | Azure AI Speech |
+| `AZURE_LANGUAGE_ENDPOINT`, `AZURE_LANGUAGE_KEY` | Azure AI Language |
+| `AZURE_TRANSLATOR_KEY`, `AZURE_TRANSLATOR_ENDPOINT`, `TRANSLATIONS_LANGUAGES` | Azure AI Translator |
+| `TRANSCRIPTS_DB_TABLE_NAME`, `ANALYSIS_DB_TABLE_NAME` | SQLite table names |
+
+### Recommendations
+
+| Variable | Meaning |
+| :--- | :--- |
+| `LLM_PROVIDER` | `openai` (default), `anthropic`, `gemini`, `ollama`, `claude-cli`, `agy-cli` |
+| `LLM_MODEL` | Model for the chosen provider; overrides its default |
+| `GPT3_API_KEY`, `OPENAI_MODEL` | OpenAI key, and the older model setting |
+| `ANTHROPIC_API_KEY` | Anthropic key |
+| `GEMINI_API_KEY`, `GOOGLE_CLOUD_PROJECT`, `GOOGLE_CLOUD_LOCATION` | Gemini, by key or through Vertex AI |
+| `OLLAMA_HOST` | Ollama server, `http://localhost:11434` by default |
+
+### Recording
+
+`CHANNELS`, `CHUNK`, `FORMAT`, `RATE` and `RECORD_SECONDS` set the recording
+defaults; a settings file passed to `-rec` overrides them.
