@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://audioanalyser.github.io/sitemap.xml
+Sitemap: https://sebastienrousseau.com/audioanalyser.github.io/sitemap.xml

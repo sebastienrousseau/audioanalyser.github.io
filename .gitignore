@@ -119,3 +119,9 @@ ENV/
 # Files
 analysis_status.txt
 recommendations_status.txt
+
+# Site build output (built by make build, deployed by pages.yml)
+/docs/
+/public/
+node_modules/
+/.serve/
