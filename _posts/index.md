@@ -30,7 +30,7 @@ local Ollama model, or a signed-in Claude Code or Agy CLI.
 
 Python 3.10 or newer, an Azure subscription with Speech and Language
 resources, and a key for the recommendation provider you choose (none for
-Ollama or the CLI providers). The [getting started guide](/audioanalyser.github.io/getting-started/)
+Ollama or the CLI providers). The [getting started guide](/getting-started/)
 walks through the setup.
 
 ## Where does my data go?
@@ -38,11 +38,11 @@ walks through the setup.
 Audio goes to Azure AI Speech to be transcribed, and transcripts go to
 Azure AI Language and to your recommendation provider. Results are written
 to local folders and a local SQLite database. The
-[security page](/audioanalyser.github.io/security/) lists every outbound call.
+[security page](/security/) lists every outbound call.
 
 ## Is it on PyPI?
 
 The `audioanalyser` package on PyPI is version 0.0.6, from February 2024. It
 predates the provider choice and the current dashboard, so install from a
-clone of the repository instead, as the [guide](/audioanalyser.github.io/getting-started/)
+clone of the repository instead, as the [guide](/getting-started/)
 shows.

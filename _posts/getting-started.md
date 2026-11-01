@@ -61,7 +61,7 @@ The main settings:
 | `AZURE_LANGUAGE_ENDPOINT`, `AZURE_LANGUAGE_KEY` | Azure AI Language |
 | `LLM_PROVIDER`, `LLM_MODEL` | Recommendation provider and model |
 
-The [reference](/audioanalyser.github.io/documentation/#configuration) lists the rest.
+The [reference](/documentation/#configuration) lists the rest.
 
 ## How do I run a first analysis?
 

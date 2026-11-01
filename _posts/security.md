@@ -52,4 +52,4 @@ the GitHub Actions, and CodeQL scans the code.
 Email **sebastian.rousseau@gmail.com**, the address in the repository's
 [security policy](https://github.com/sebastienrousseau/audioanalyser.github.io/security/policy). Do not open a public issue.
 Machine-readable contact details are in
-[security.txt](/audioanalyser.github.io/.well-known/security.txt).
+[security.txt](/.well-known/security.txt).

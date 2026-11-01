@@ -38,4 +38,4 @@ pricing, with your own accounts and keys.
 
 The information on this site is provided in good faith and may lag behind the
 main branch, which is the reference. Report a mistake through the
-[contact page](/audioanalyser.github.io/contact/).
+[contact page](/contact/).
