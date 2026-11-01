@@ -52,7 +52,7 @@ SQLite.
 with recommendations to `RECOMMENDATIONS_FOLDER`. The provider is chosen
 with `LLM_PROVIDER`: `openai` (the default), `anthropic`, `gemini`,
 `ollama`, `claude-cli` or `agy-cli`. The
-[providers page](/audioanalyser.github.io/providers/) covers each one.
+[providers page](/providers/) covers each one.
 
 ## Translation and text to speech
 

@@ -20,7 +20,7 @@ lead: "Bug reports, documentation fixes and code are all welcome."
 [Open an issue](https://github.com/sebastienrousseau/audioanalyser.github.io/issues) with the steps to reproduce, what you
 expected and what happened, and your Python version and operating system.
 Report security problems by email instead, as the
-[security page](/audioanalyser.github.io/security/#how-do-i-report-a-vulnerability) explains.
+[security page](/security/#how-do-i-report-a-vulnerability) explains.
 
 ## How do I set up the repository?
 

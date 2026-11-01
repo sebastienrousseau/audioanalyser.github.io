@@ -34,6 +34,6 @@ an issue.
 
 ## How do I report a barrier?
 
-Use the [contact form](/audioanalyser.github.io/contact/) or
+Use the [contact form](/contact/) or
 [open an issue](https://github.com/sebastienrousseau/audioanalyser.github.io/issues) describing the page and the problem, and it
 will be fixed.

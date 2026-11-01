@@ -39,4 +39,4 @@ first commit was made in December 2023.
 ## How is it versioned?
 
 Releases are tagged `v0.0.x` and step by 0.0.1. The main branch is ahead of
-the PyPI package; read the [changelog](/audioanalyser.github.io/changelog/) before upgrading.
+the PyPI package; read the [changelog](/changelog/) before upgrading.

@@ -17,6 +17,6 @@ lead: "For bugs and feature requests, a GitHub issue reaches the maintainer and 
 ---
 - **Bugs and feature requests:** [open an issue](https://github.com/sebastienrousseau/audioanalyser.github.io/issues).
 - **Security problems:** email sebastian.rousseau@gmail.com, as the
-  [security page](/audioanalyser.github.io/security/) explains. Do not use this form or a public
+  [security page](/security/) explains. Do not use this form or a public
   issue.
 - **Anything else:** use the form below.

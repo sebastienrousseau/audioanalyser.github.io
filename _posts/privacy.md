@@ -35,5 +35,5 @@ email address and message are used only to reply to you.
 ## What about the application?
 
 Audio Analyser runs on your machine and sends audio and text to the
-services you configure; the [security page](/audioanalyser.github.io/security/#what-leaves-the-machine)
+services you configure; the [security page](/security/#what-leaves-the-machine)
 lists them.
