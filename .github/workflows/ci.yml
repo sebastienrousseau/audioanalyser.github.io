@@ -198,7 +198,7 @@ jobs:
       - name: ❯ Publish distribution packages to PyPI 🚀
         id: publish
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: pypa/gh-action-pypi-publish@v1.14.2
+        uses: pypa/gh-action-pypi-publish@v1.14.3
         with:
           user: ${{ env.TWINE_USERNAME }}
           password: ${{ env.TWINE_PASSWORD }}
