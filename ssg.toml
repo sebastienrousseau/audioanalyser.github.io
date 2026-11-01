@@ -6,7 +6,7 @@
 site_name = "Audio Analyser"
 site_title = "Audio Analyser: speech-to-text and text analysis with Azure AI"
 site_description = "Audio Analyser is an open-source Python command-line tool that records audio, transcribes it with Azure AI Speech, analyses the text with Azure AI Language and writes recommendations with a choice of language model."
-base_url = "https://sebastienrousseau.com/audioanalyser.github.io"
+base_url = "https://audioanalyser.pro"
 language = "en-GB"
 
 content_dir = "_posts"
