@@ -45,6 +45,9 @@ optional = true
 
 [tool.poetry.group.gemini.dependencies]
 google-genai = ">=2.16.0"
+# Via google-auth -> pyasn1-modules. pyasn1 <= 0.6.4 is advised
+# (Dependabot alerts #175 to #178); fixed in 0.6.5.
+pyasn1 = ">=0.6.5"
 
 [build-system]
 requires = ["poetry-core"]
