@@ -17,7 +17,7 @@ azure-common = "1.1.28"
 azure-core = "1.41.0"
 cherrypy = "18.10.0"
 datetime = "5.4"
-openai="1.109.1"
+openai="3.42.0"
 pyaudio = "0.2.14"
 python = "^3.10"
 python-dotenv="1.2.4"
@@ -27,7 +27,7 @@ requests = "2.34.2"
 # GHSA-54p9-h82j-f925, setuptools GHSA-xmj3-9gf7-h52w, urllib3
 # GHSA-vxq7-64xx-v4gw, GHSA-8988-9cw3-xx77 and GHSA-gh4c-6fx4-qh6g.
 certifi = ">=2026.10.19"
-multidict = ">=6.9.1"
+multidict = ">=7.1.0"
 setuptools = ">=84.1.0"
 urllib3 = ">=2.8.0"
 
