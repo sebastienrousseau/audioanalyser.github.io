@@ -38,7 +38,7 @@ urllib3 = ">=2.8.0"
 optional = true
 
 [tool.poetry.group.anthropic.dependencies]
-anthropic = ">=0.120.0"
+anthropic = ">=2.6.0"
 
 [tool.poetry.group.gemini]
 optional = true
